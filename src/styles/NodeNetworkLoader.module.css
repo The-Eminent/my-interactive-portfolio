@@ -1,0 +1,166 @@
+/* Full screen container for the loader */
+.loaderContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at top left, #10183b 0%, #04081b 100%); /* Dark background */
+    z-index: 100; /* Ensure it's on top */
+    display: flex; /* For centering content if not using absolute positioning on networkArea */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* Opacity animation controlled by Framer Motion in the component's exit prop */
+}
+
+/* Area containing the network (nodes and lines) */
+.networkArea {
+    position: absolute; /* Position over the background */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the container itself */
+
+    /* Set size relative to content or viewport, or let absolute children define size */
+     /* Example: max-width/max-height to limit network spread */
+    max-width: 90vw;
+    max-height: 90vh;
+
+    /* debug: background: rgba(255,0,0,0.1); border: 1px dashed red;*/
+}
+
+/* Individual Network Nodes (circles) */
+.networkNode {
+    position: absolute; /* Positioned absolutely within .networkArea */
+     /* size is set via inline style in JS based on nodeSize */
+    border-radius: 50%; /* Make it a circle */
+    background-color: #8f94fb; /* Example node color (blue/purple from previous gradient) */
+    /* Box shadow for subtle glow - can be animated or static */
+     box-shadow: 0 0 5px 2px rgba(143, 148, 251, 0.3);
+
+    /* Initial opacity/scale handled by Framer Motion initial/variants/controls */
+     /* Position (left, top) is set via inline style in JS */
+     transform: translate(-50%, -50%); /* Ensures the left/top position is the center of the node */
+
+     /* Optional: pointer-events: none; to prevent blocking clicks on elements below */
+}
+
+/* Line segments connecting nodes */
+.networkLine {
+    position: absolute; /* Positioned absolutely within .networkArea */
+     /* Size (width/height), and position (left, top) are set via inline style in JS */
+
+     background-color: rgba(143, 148, 251, 0.2); /* Subtle line color (lighter, semi-transparent) */
+    /* Opacity animation handled by Framer Motion initial/variants/controls */
+
+    /* Ensure transform-origin is correct if you were animating scale from an end point */
+     /* transform-origin: 0% 50%; for horizontal line drawing from left */
+     /* transform-origin: 50% 0%; for vertical line drawing from top */
+     /* Since we are currently just fading opacity, transform-origin isn't critical here */
+
+     /* Optional: pointer-events: none; */
+}
+
+/* Specific style for horizontal lines (mostly for semantic clarity or potential future width changes) */
+.horizontal {
+    /* width and height handled in JS */
+}
+
+/* Specific style for vertical lines (mostly for semantic clarity or potential future height changes) */
+.vertical {
+    /* width and height handled in JS */
+}
+
+
+/* Container for the greeting text lines */
+/* Positioned centrally over the network */
+.greetingTextContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the text block visually */
+
+    z-index: 20; /* Above network elements */
+    font-family: 'Outfit', sans-serif; /* Use your portfolio font */
+    font-size: 2em; /* Adjust size */
+    font-weight: bold;
+    color: #ffffff; /* White text */
+    text-shadow: 0 0 15px rgba(255,255,255,0.3); /* Slightly stronger glow */
+    text-align: center; /* Center text within the block */
+    max-width: 70%; /* Limit text width, adjust as needed */
+    line-height: 1.4; /* Space between lines */
+    white-space: pre-wrap; /* Allow text wrapping */
+
+    /* Initial opacity/scale/y handled by Framer Motion initial/variants/controls */
+}
+
+/* Individual lines of text */
+.greetingLine {
+    margin: 0;
+    padding: 0.1em 0; /* Subtle vertical spacing */
+    color: inherit; /* Inherit white color */
+    /* No separate style needed if the look is uniform */
+}
+
+
+/* Skip button styles */
+.skipButton {
+     position: absolute;
+     bottom: 25px; /* Adjust position from bottom */
+     right: 25px; /* Adjust position from right */
+     background: rgba(255,255,255,0.1);
+     border: 1px solid rgba(255,255,255,0.3);
+     border-radius: 8px;
+     padding: 8px 18px;
+     color: rgba(255,255,255,0.8);
+     font-size: 1em;
+     font-family: 'Outfit', sans-serif;
+     cursor: pointer;
+     z-index: 110; /* Above loader */
+     backdrop-filter: blur(5px);
+     transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+      /* Initial opacity/y handled by Framer Motion */
+}
+.skipButton:hover {
+     background: rgba(255,255,255,0.2);
+     border-color: rgba(255,255,255,0.5);
+     color: #ffffff;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+     /* Adjust grid spacing or total network size */
+     .networkArea {
+         max-width: 95vw;
+         max-height: 95vh;
+         /* Consider reducing spacing and node size here */
+     }
+
+    .networkNode { /* May need size adjustment */ }
+    .networkLine { /* May need size/thickness adjustment */ }
+
+
+    .greetingTextContainer {
+        font-size: 1.6em; /* Scale down text */
+        max-width: 85%;
+    }
+
+     .skipButton { bottom: 20px; right: 20px; padding: 7px 15px; font-size: 0.9em;}
+}
+
+@media (max-width: 480px) {
+     /* Adjust grid spacing more aggressively */
+     .networkArea {
+         max-width: 100vw;
+         max-height: 100vh;
+         /* Further reduce spacing and node size */
+     }
+
+    .networkNode { /* Further size adjustment */ }
+    .networkLine { /* Further size/thickness adjustment */ }
+
+
+    .greetingTextContainer { font-size: 1.2em; max-width: 95%; }
+     .skipButton { bottom: 15px; right: 15px; padding: 5px 12px; font-size: 0.8em;}
+}

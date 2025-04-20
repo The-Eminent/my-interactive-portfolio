@@ -1,0 +1,96 @@
+/* Basic Reset and Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top left, #10183b 0%, #04081b 100%);
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+}
+
+.app-container {
+    width: 90%;
+    max-width: 1200px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.content-area {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+    color: #00e0ff;
+    text-shadow: 0 0 10px rgba(0, 224, 255, 0.4);
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.code-like {
+    font-family: 'Fira Code', monospace;
+    color: #00ff00;
+}
+
+button {
+    font-family: 'Inter', sans-serif;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+}
+
+a {
+    color: #00e0ff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ffffff;
+}
+
+/* Optional: Style scrollbar
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #04081b; }
+::-webkit-scrollbar-thumb { background: #00e0ff; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #ffffff; } */
+
+@media (max-width: 768px) {
+    .app-container { width: 95%; height: 95vh; padding: 10px; }
+    .content-area { padding: 15px; }
+    h1, h2 { font-size: 2em; }
+}

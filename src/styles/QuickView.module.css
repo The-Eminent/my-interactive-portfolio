@@ -1,0 +1,483 @@
+/* src/styles/QuickView.module.css */
+
+/* Main container for the Quick View screen */
+/* This motion.div is the scrollable element */
+/* App.jsx's AnimatePresence animates its entry/exit based on `quickViewScreenVariants` */
+.container {
+    width: 100%; /* Fill parent width */
+    height: 100%; /* Fill parent height (assumes parent like .app-container limits height) */
+    overflow-y: auto; /* CRITICAL: Enable vertical scrolling */
+    box-sizing: border-box; /* Padding included in size */
+    color: #fff; /* Default text color */
+    padding: 30px 20px; /* Inner padding around content */
+    position: relative; /* Needed for fixed/absolute children */
+
+     /* Optional: Background/border/shadow for the QuickView content area */
+     /* background-color: rgba(16, 24, 59, 0.8); */
+     /* border: 1px solid rgba(36, 44, 71, 0.6); */
+     /* border-radius: 10px; */
+     /* box-shadow: 0 0 30px rgba(0, 200, 255, 0.05); */
+
+
+     /* Styles to hide the scrollbar (for visual cleanliness) */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE10+ */
+}
+/* Hide scrollbar for Webkit browsers (Chrome, Safari, Opera) */
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* Style for individual content sections (e.g., About, Skills, Experience, etc.) */
+/* These motion.sections are animated via `sectionItemVariants` (staggered entry) */
+.section {
+    margin-bottom: 50px; /* Space below each section */
+    padding: 0 10px; /* Small horizontal padding inside section */
+    /* Animations driven by Framer Motion */
+}
+
+/* Style for the LAST section BEFORE the Back button container */
+/* This adds necessary space at the bottom to allow the last content section to be fully visible above the fixed Back button area */
+/* `last-of-type` is better than `:last-child` here if the back button container is always the last element in the QuickView container */
+.section:last-of-type {
+     margin-bottom: 150px; /* Increased space to comfortably fit button area below last content */
+}
+
+
+/* Style for section headings (e.g., "About Me", "Skills") */
+.section h2 {
+    font-size: 1.8em; /* Heading size */
+    font-family: 'Outfit', sans-serif; /* Your heading font */
+    color: #00e0ff; /* Accent color */
+    text-shadow: 0 0 10px rgba(0, 224, 255, 0.4); /* Glow effect */
+    margin-bottom: 18px; /* Space below heading and underline */
+    border-bottom: 2px solid rgba(0, 224, 255, 0.3); /* Underline */
+    padding-bottom: 8px; /* Space between text/icon and underline */
+    text-align: left; /* Align heading left */
+    display: flex; /* Use flexbox to place icon and text side-by-side */
+    align-items: center; /* Vertically center icon and text */
+    gap: 15px; /* Space between icon and text */
+    font-weight: bold;
+     line-height: 1.2; /* Ensure tight line height if multi-line heading */
+}
+
+/* Style for the icons within the section headings */
+.section h2 svg {
+    /* Icon appearance */
+     font-size: 1.2em; /* Make icon slightly larger than heading text */
+     color: #00e0ff; /* Keep accent color */
+     flex-shrink: 0; /* Prevent icon from shrinking in flex layout if text is long */
+}
+
+
+/* Style for paragraph text within sections */
+.section p {
+    font-family: 'Inter', sans-serif; /* Body font */
+    font-size: 1em;
+    line-height: 1.6;
+    color: #f0f0f0; /* Lighter white/grey text */
+    text-align: left;
+}
+
+/* Style for lists within sections (Skills, Achievements, Contact) */
+.section ul {
+    font-family: 'Inter', sans-serif; /* Body font */
+    font-size: 1em;
+    line-height: 1.6;
+    color: #f0f0f0;
+    list-style: disc inside; /* Standard bullet points */
+    padding-left: 0;
+    text-align: left;
+}
+.section ul li {
+    margin-bottom: 10px; /* Increased space between list items */
+}
+
+
+/* Style for cards within sections (Experience, Projects, Education) */
+/* These motion.divs are animated via `sectionItemVariants` and have `whileHover`/`whileTap` animations defined in JS */
+.card {
+    background-color: rgba(30, 30, 50, 0.5); /* Semi-transparent dark background */
+    border: 1px solid rgba(70, 70, 100, 0.3); /* Subtle border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 25px; /* Increased padding inside the card */
+    margin-bottom: 25px; /* Increased space below each card */
+    text-align: left; /* Left align text within the card */
+     /* Hover/Tap effects driven by Framer Motion `whileHover`/`whileTap` in `QuickView.jsx` */
+}
+
+
+/* Style for card headings (Title of Exp/Project/Degree) */
+.card h3 {
+    font-family: 'Outfit', sans-serif; /* Heading font */
+    font-size: 1.3em; /* Increased heading size */
+    color: #ffffff; /* White color */
+    margin-bottom: 6px; /* Adjust space */
+    text-shadow: none;
+    font-weight: bold;
+    display: inline-block; /* Allows other inline elements like icons next to it */
+    margin-right: 15px; /* Space after the heading */
+}
+/* Style for the italicized part within the card heading (Company/Institution) */
+.card h3 em {
+    font-size: 0.9em; /* Smaller */
+    color: #a0a0b0; /* Muted grey */
+    font-style: italic;
+    font-weight: normal;
+}
+
+
+/* Style for meta info lines in cards (Date, Tech Used) */
+.card .date,
+.card .tech {
+    font-family: 'Inter', sans-serif; /* Body font */
+    font-size: 0.9em; /* Slightly smaller */
+    color: #a0a0b0; /* Muted grey */
+    margin-bottom: 18px; /* Increased space below this line */
+    display: block; /* Forces a line break after this element */
+}
+/* Style specifically for the tech stack list in project cards */
+.card .tech {
+    color: #00e0ff; /* Accent color for tech list */
+    font-style: normal; /* Ensure not italic */
+    font-weight: bold; /* Optional: Make bold */
+}
+
+
+/* Wrapper for project title and potential GitHub icon */
+/* Use flexbox to align heading and icon side-by-side */
+.projectTitleLine {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Vertically center content (heading and icon) */
+    gap: 10px; /* Space between heading h3 and icon link */
+    /* May need margin-bottom if this row acts as a header */
+}
+/* Adjust margin bottom of the tech line that follows the project title line */
+/* + selector targets an element that is immediately preceded by another specific element */
+.projectTitleLine + .tech {
+    margin-top: 8px; /* Add some space between the project title row and the tech span below it */
+}
+
+
+/* Style for the project link paragraph if used */
+.card .projectLink {
+     margin-top: 12px; /* Space above the link paragraph */
+     font-size: 0.9em;
+     /* Link style defined below */
+}
+/* Style for the actual <a> tag for links within cards (like Project Live Demo) */
+.card .projectLink a {
+    color: #00e0ff; /* Accent color */
+    text-decoration: underline;
+     font-family: 'Inter', sans-serif;
+     transition: color 0.3s ease;
+}
+.card .projectLink a:hover {
+     color: #ffffff;
+}
+
+
+/* Style for the GitHub icon link next to project titles */
+/* Animated via motion.a in JS with whileHover/whileTap */
+.githubIconLink {
+    display: inline-flex; /* Use inline-flex to keep it close to the title like text */
+    align-items: center; /* Vertically center icon inside link */
+    color: #00e0ff; /* Accent color */
+    font-size: 1.5em; /* Icon size */
+     text-decoration: none; /* Ensure link doesn't have underline */
+     /* WhileHover/whileTap animations are in JS */
+}
+/* Keep simple hover color change in CSS for robustness */
+.githubIconLink:hover {
+    color: #ffffff;
+}
+
+
+/* --- Skills Section Specifics (Icons and List Styling) --- */
+/* Container for all individual skill items - uses flex wrap for pill layout */
+.skillsListContainer {
+    display: flex; /* Use flexbox */
+    flex-wrap: wrap; /* Allow items to break into multiple lines */
+    gap: 12px; /* Space between individual skill items */
+    padding: 5px 0; /* Padding around the flex container */
+    /* Stagger animation applied to children motion.divs */
+}
+
+/* Style for individual skill items (icon + text inside the pill) */
+/* Animated via motion.div using `whileHover`/`whileTap` in JS */
+.skillItem {
+     display: inline-flex; /* Use inline-flex so these items sit like text in a line */
+     align-items: center; /* Vertically center icon and text within the item */
+     gap: 10px; /* Space between icon and text within the pill */
+     background-color: rgba(0, 224, 255, 0.08); /* Subtle accent background */
+     border: 1px solid rgba(0, 224, 255, 0.3); /* Accent border */
+     border-radius: 20px; /* Creates the pill shape */
+     padding: 8px 15px; /* Inner padding for the pill */
+     color: #f0f0f0; /* Text color for the skill name */
+     font-family: 'Inter', sans-serif; /* Body font */
+     font-size: 0.95em; /* Text size */
+     cursor: default; /* Default cursor */
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+      /* Hover/Tap animations (scale, color change) driven by motion.div in JS */
+ }
+/* Style for the icon element inside a skill item */
+.skillItem .skillIcon {
+     display: flex; /* Flex to contain SVG icon */
+     align-items: center;
+     font-size: 1.3em; /* Icon size relative to skill text size */
+     color: #00e0ff; /* Accent color */
+     /* Hover styles controlled by parent .skillItem in JS */
+ }
+/* Style for the text (skill name) inside a skill item */
+.skillItem .skillName {
+     /* Inherits font, size, color from parent .skillItem */
+ }
+
+ /* Simple CSS hover fallback */
+ .skillItem:hover { background-color: rgba(0, 224, 255, 0.15); border-color: #00e0ff; color: #ffffff;} /* Hover background, border, text color */
+ .skillItem:hover .skillIcon { color: #ffffff; } /* Icon color on hover */
+
+
+/* --- Education Section Specifics (Logo) --- */
+/* Flex wrapper inside card to position text and logo */
+/* Adjusts to stack columns on small screens, side-by-side row on larger */
+.educationCardContent {
+     display: flex; /* Use flexbox */
+     align-items: center; /* Vertically align content inside */
+     gap: 20px; /* Space between text content and logo container */
+      flex-direction: column; /* Default: stack content as columns */
+      text-align: center; /* Default: center text in stacked layout */
+}
+/* Text content wrapper (Degree, Institution, Duration) */
+/* Takes remaining space in row layout, centers text in column layout */
+.educationText {
+    flex-grow: 1; /* Allows text block to fill available space when in row layout */
+    text-align: center; /* Default: Center text lines */
+}
+/* Ensure individual text lines inside educationText respect alignment */
+.educationText h3, .educationText .text, .educationText .date {
+    text-align: center; /* Default: Center in column/stacked layout */
+     display: block;
+}
+.educationText h3 { margin-bottom: 4px; }
+.educationText .text { margin-bottom: 4px; font-style: normal; }
+.educationText .date { margin-bottom: 0; }
+
+
+/* Container for the Education Logo Image */
+/* Wraps the <img> tag and applies styling like size, border, background, shadow */
+/* This motion.div is animated with its own subtle entry/hover */
+.educationLogoContainer {
+     /* Size of the container div that holds the logo */
+    width: 80px; /* Example size - TWEAK */
+    height: 80px; /* Example size - TWEAK */
+    min-width: 80px; min-height: 80px; /* Prevent shrinking */
+    display: flex; /* Use flexbox to center the image inside */
+    justify-content: center;
+    align-items: center;
+     border: 1px solid rgba(0, 224, 255, 0.3); /* Accent border */
+     border-radius: 8px; /* Rounded corners matching card/theme */
+     background-color: rgba(0, 224, 255, 0.05); /* Very subtle accent background */
+     box-shadow: 0 0 8px rgba(0, 224, 255, 0.2); /* Subtle glow */
+
+     /* Optional hover effect if not using JS */
+     /* transition: all 0.3s ease; &:hover { border-color: #00e0ff; box-shadow: 0 0 15px rgba(0, 224, 255, 0.5); } */
+}
+/* Style for the actual <img> element inside the logo container */
+.educationLogoImg {
+    display: block; /* Remove extra space below image */
+     max-width: 90%; /* Image should fit inside its container with padding/gap visual */
+     max-height: 90%; /* Image should fit inside its container */
+     object-fit: contain; /* Scales image to fit container while maintaining aspect ratio */
+     border-radius: inherit; /* Inherit container border radius */
+     /* No animation or hover styles on the image itself, use parent container */
+}
+
+/* Breakpoint: Switch Education Card Layout to side-by-side for wider screens */
+@media (min-width: 769px) {
+    .educationCardContent {
+         flex-direction: row; /* Arrange children (text, logo) in a row */
+         gap: 30px; /* Space between text and logo in row layout */
+         text-align: left; /* Reset text alignment for the main container */
+    }
+     /* Ensure text content elements align left in row layout */
+     .educationText { text-align: left; }
+     .educationText h3, .educationText .text, .educationText .date { text-align: left;}
+     /* Optional: adjust gap here or margins on the logo container if flex gap isn't perfect */
+     /* .educationLogoContainer { margin-left: 15px; } */
+}
+
+
+/* --- Contact Section Specifics --- */
+/* Container for the list items within the Contact section */
+.contactList {
+    /* Optional flexbox for centering contact links if needed */
+    /* display: flex; flex-direction: column; align-items: center; */
+}
+/* Style for individual list items within the Contact section (li tags) */
+.section ul li {
+     margin-bottom: 15px; /* Space between contact link items */
+}
+
+/* Style for the link elements (<a> tags) inside the Contact list items */
+/* Animated via motion.a with whileHover/whileTap in JS */
+/* Includes icon + text, aligned side-by-side */
+.contactLink {
+     display: inline-flex; /* Use inline-flex so link flows with text/bullets */
+     align-items: center; /* Vertically center icon and text */
+     gap: 12px; /* Space between icon and text */
+     color: #00e0ff; /* Accent color for links */
+    text-decoration: none; /* No default underline */
+     font-weight: normal; /* Not bold */
+      transition: color 0.3s ease, transform 0.3s ease; /* Transition properties if not fully overridden by JS whileHover */
+     /* WhileHover/whileTap animations in JS will control scale/position/color */
+ }
+/* Keep simple CSS hover for robustness */
+.contactLink:hover {
+     color: #ffffff; /* White on hover */
+     /* Hover JS also changes scale/position */
+}
+
+/* Style for the icon element (svg inside span) within a contact link */
+.contactIcon {
+     display: flex; /* Flex to contain the SVG icon precisely */
+     align-items: center;
+     font-size: 1.5em; /* Icon size relative to link text size */
+     color: #00e0ff; /* Accent color */
+     /* Hover styles handled by parent .contactLink in JS */
+}
+
+/* Style for the text (LinkedIn, GitHub, Email labels) within a contact link */
+.contactText {
+     font-family: 'Inter', sans-serif; /* Body font */
+     font-size: 1em; /* Ensure consistency */
+     /* Color inherited from .contactLink unless specific */
+ }
+
+
+/* Back Button Container - Positions the button fixed at the bottom of the QuickView scroll area */
+/* This motion.div is included as the last item in the main stagger sequence */
+/* Positioned FIXED so it stays in the viewport while the container content scrolls */
+.backButtonContainer {
+    position: fixed; /* Fixed position relative to the viewport */
+    bottom: 30px; /* Distance from the bottom edge of the viewport */
+    left: 50%; /* Start position at horizontal center of the viewport */
+    transform: translateX(-50%); /* Shift left by half its own width to truly center it horizontally */
+    z-index: 90; /* Ensure it's above scrolling content (z-index typically < 90) but below loader (z-index 100+) */
+     padding: 0; /* Remove default padding if button adds its own */
+    /* Add backdrop filter or background here for a bar-like look if needed */
+}
+
+/* Style for the Back button element itself (button tag) */
+/* Animated via motion.button with whileHover/whileTap in JS */
+.backButton {
+     background: rgba(0, 224, 255, 0.1); /* Semi-transparent accent background */
+     border: 1px solid rgba(0, 224, 255, 0.4); /* Accent color border */
+     border-radius: 5px;
+     padding: 12px 25px; /* Increased padding */
+     font-size: 1em; /* Button text size */
+     color: #ffffff; /* White text color */
+     cursor: pointer; /* Hand cursor */
+     font-family: 'Inter', sans-serif; /* Use body font */
+     transition: all 0.3s ease; /* Smooth CSS transitions for fallback */
+     text-transform: uppercase; /* Uppercase text */
+     letter-spacing: 1px;
+     box-shadow: 0 0 10px rgba(0, 224, 255, 0.4); /* Subtle glow */
+}
+
+.backButton:hover {
+    background: rgba(0, 224, 255, 0.2); /* More visible background */
+    border-color: #00e0ff; /* Accent border */
+    color: #00e0ff; /* Accent text color */
+     box-shadow: 0 0 18px rgba(0, 224, 255, 0.7); /* Intense glow */
+}
+.backButton:active {
+    transform: scale(0.97); /* Prominent shrink on click */
+    border-color: #00e0ff;
+    color: #00e0ff;
+     box-shadow: 0 0 10px rgba(0, 224, 255, 0.6);
+}
+
+
+/* --- Responsive Adjustments for QuickView --- */
+@media (max-width: 768px) {
+    .container { padding: 25px 15px; } /* Adjust padding */
+    .section { margin-bottom: 35px;}
+     .section:last-of-type { margin-bottom: 100px; } /* Adjust last section margin */
+
+    .section h2 { font-size: 1.5em; margin-bottom: 15px; gap: 12px; }
+     .section h2 svg { font-size: 1.1em;}
+
+    .section p, .section ul { font-size: 0.9em; line-height: 1.5;}
+     .section ul li { margin-bottom: 8px;}
+
+    .card { padding: 20px 15px; margin-bottom: 20px;}
+    .card h3 { font-size: 1.1em; margin-right: 10px; }
+    .card h3 em { font-size: 0.8em; }
+    .card .date, .card .tech { font-size: 0.8em; margin-bottom: 12px;}
+
+    .projectTitleLine { gap: 6px; }
+    .githubIconLink { font-size: 1.4em; }
+
+
+     /* Education Card Responsive (stacked) */
+    .educationCardContent { gap: 15px; }
+     .educationText h3, .educationText .text, .educationText .date { text-align: center;}
+     .educationLogoContainer {
+         width: 65px; height: 65px; min-width: 65px; min-height: 65px; /* Adjust logo size */
+     }
+     @media (min-width: 769px) { /* Side-by-side on wider */
+         .educationCardContent { gap: 20px; }
+     }
+
+    /* Contact Section Responsive */
+    .section ul li { margin-bottom: 12px; }
+    .contactLink { gap: 10px; }
+     .contactIcon { font-size: 1.4em;}
+
+
+    .backButtonContainer { bottom: 20px; padding: 8px 15px;}
+    .backButton { font-size: 0.95em; padding: 10px 20px; letter-spacing: 0.9px;}
+}
+
+@media (max-width: 480px) {
+     .container { padding: 15px 5px; } /* Further reduce padding */
+     .section { margin-bottom: 30px;}
+     .section:last-of-type { margin-bottom: 80px; }
+
+     .section h2 { font-size: 1.2em; gap: 8px;}
+      .section h2 svg { font-size: 1em;}
+
+     .section p, .section ul { font-size: 0.85em; line-height: 1.5;}
+     .section ul li { margin-bottom: 5px;}
+
+     .card { padding: 15px 10px; margin-bottom: 15px;}
+     .card h3 { font-size: 1em; margin-right: 6px;}
+     .card h3 em { font-size: 0.75em; }
+     .card .date, .card .tech { font-size: 0.75em; margin-bottom: 10px;}
+
+     .projectTitleLine { gap: 4px; }
+     .githubIconLink { font-size: 1.3em; }
+
+     /* Education Card Responsive (stacked) */
+     .educationCardContent { gap: 10px; }
+     .educationLogoContainer {
+         width: 60px; height: 60px; min-width: 60px; min-height: 60px; /* Smallest logo size */
+     }
+     @media (min-width: 769px) { /* Side-by-side on wider */
+         .educationCardContent { gap: 15px; }
+     }
+
+    /* Contact Section Responsive */
+    .section ul li { margin-bottom: 10px; }
+    .contactLink { gap: 8px; }
+     .contactIcon { font-size: 1.3em;}
+
+
+    .backButtonContainer {
+        bottom: 15px;
+         padding: 5px 10px;
+    }
+    .backButton { font-size: 0.8em; padding: 8px 15px; letter-spacing: 0.5px;}
+}

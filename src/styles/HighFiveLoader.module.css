@@ -1,0 +1,86 @@
+/* Keep this file as it was in the previous step. It defines the basic styles for positioning and appearance. */
+/* Full screen container for the loader */
+/* Handles background, ensures full screen, sits on top with z-index */
+.loaderContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at top left, #10183b 0%, #04081b 100%); /* Your dark background */
+    z-index: 100; /* Ensure it's on top of other page content */
+    display: flex; /* Use flexbox for basic centering (can also be used with absolute children for alignment helpers) */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    overflow: hidden; /* Hide content that moves outside */
+    /* Opacity animation for exit is controlled by the component's `exit` prop in JS, managed by App.jsx AnimatePresence */
+}
+
+/* Container for the Lottie Animation (the fists) */
+/* Uses absolute positioning relative to loaderContainer to place animation precisely */
+.characterContainer {
+    position: absolute; /* Position independently within the fixed loaderContainer */
+    /* top, left, and transform in inline style in JS override these for central positioning */
+    top: 50%; /* Fallback if inline styles weren't applied, but rely on inline */
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* *** SIZE OF THE LOTTIE CONTAINER - THESE ARE BASE STYLES, TWEAK IN JS INLINE STYLE AS NEEDED *** */
+    /* These dimensions control the size of the box the Lottie is rendered inside. */
+    /* The actual visual size of the Lottie content may depend on the JSON's original size/viewbox and how it scales within this container. */
+    /* Tweak the inline `width` and `height` style properties in HighFiveLoader.jsx first! */
+    width: 300px;
+    height: 300px;
+
+
+    z-index: 20; /* Position the animation layer visually above others if any */
+
+     /* Add background, border, etc. for the container itself if needed */
+}
+
+/* The LottiePlayer component renders inside .characterContainer. */
+/* If Lottie is not filling its container, ensure the `style={{ width: '100%', height: '100%' }}` is present on <LottiePlayer> */
+/* No other direct styles needed for LottiePlayer itself here. */
+
+
+/* Greeting Text Container is NOT rendered in HighFiveLoader.jsx anymore */
+/* Skip button styles - Positioned absolutely in the bottom right relative to loaderContainer */
+.skipButton {
+     position: absolute; /* Position relative to the .loaderContainer */
+     bottom: 25px; /* Distance from bottom edge */
+     right: 25px; /* Distance from right edge */
+     background: rgba(255,255,255,0.1); /* Semi-transparent background */
+     border: 1px solid rgba(255,255,255,0.3); /* Subtle border */
+     border-radius: 8px;
+     padding: 8px 18px;
+     color: rgba(255,255,255,0.8); /* Text color */
+     font-size: 1em;
+     font-family: 'Outfit', sans-serif; /* Your font */
+     cursor: pointer; /* Indicate clickable */
+     z-index: 110; /* Higher z-index to ensure it's clickable */
+     backdrop-filter: blur(5px); /* Optional blur effect */
+     transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease; /* Hover transitions */
+     /* Initial opacity/y for animation handled by Framer Motion variants/controls */
+}
+/* Style for the skip button on hover */
+.skipButton:hover {
+     background: rgba(255,255,255,0.2);
+     border-color: rgba(255,255,255,0.5);
+     color: #ffffff;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .characterContainer {
+        width: 220px; height: 220px; /* TWEAK responsive size */
+    }
+    /* Text container styles removed */
+    .skipButton { bottom: 20px; right: 20px; padding: 7px 15px; font-size: 0.9em;} /* Adjust button size/position */
+}
+
+@media (max-width: 480px) {
+     .characterContainer { width: 180px; height: 180px; } /* Further TWEAK responsive size */
+    /* Text container styles removed */
+     .skipButton { bottom: 15px; right: 15px; padding: 5px 12px; font-size: 0.8em;} /* Further adjust button size/position */
+}

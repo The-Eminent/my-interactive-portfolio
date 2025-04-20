@@ -1,0 +1,188 @@
+/* Styles for the Hero component */
+.heroContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 10;
+    position: relative;
+    color: #ffffff; /* Default text color for hero */
+}
+
+.photoContainer {
+    margin-bottom: 30px;
+     position: relative;
+     display: inline-block; /* Make container wrap the image for pseudo-element centering */
+}
+
+.profilePhoto {
+    width: 180px; /* Revert size or adjust */
+    height: 180px;
+    border-radius: 50%;
+     border: 3px solid rgba(255, 255, 255, 0.1); /* Very subtle light border */
+    object-fit: cover;
+     position: relative;
+     z-index: 1;
+     transition: border-color 0.3s ease; /* Smooth border color transition */
+}
+
+/* Subtle glow behind the photo */
+.photoContainer::before {
+     content: '';
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     width: 100%; /* Controls how far the blur extends */
+     height: 100%;
+     background-color: #00e0ff; /* Accent Aqua glow */
+     border-radius: 50%;
+     transform: translate(-50%, -50%);
+     filter: blur(40px);
+     opacity: 0.3;
+     z-index: 0;
+     transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.photoContainer:hover::before {
+    opacity: 0.6;
+    filter: blur(50px);
+}
+.photoContainer:hover .profilePhoto {
+    border-color: #00e0ff; /* Aqua border on hover */
+}
+
+
+.textContainer {
+    margin-bottom: 40px;
+}
+
+.name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 4em;
+    margin-bottom: 0.1em;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.tagline {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2em;
+    color: #00e0ff;
+    text-shadow: 0 0 12px rgba(0, 224, 255, 0.6);
+    margin-top: 0;
+    margin-bottom: 0.8em;
+}
+
+.introLine {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1em;
+    color: #8b93af;
+}
+
+.exploreButton {
+    background: rgba(0, 224, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    padding: 12px 40px;
+    font-size: 1.3em;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(0, 224, 255, 0.3);
+
+    &:hover {
+         transform: scale(1.05);
+         border-color: #ffffff;
+         color: #00e0ff;
+         box-shadow: 0 0 25px rgba(0, 224, 255, 0.8);
+    }
+
+    @media (max-width: 768px) {
+         &:hover {
+             transform: scale(1);
+             box-shadow: 0 0 15px rgba(0, 224, 255, 0.5);
+         }
+     }
+
+     &::before {
+         content: '';
+         position: absolute;
+         top: 0;
+         left: -100%;
+         width: 100%;
+         height: 100%;
+         background: rgba(0, 224, 255, 0.15);
+         transition: transform 0.4s ease;
+         z-index: -1;
+         transform: translateX(0);
+     }
+
+    &:hover::before {
+          transform: translateX(200%);
+    }
+
+    &:active {
+        transform: scale(0.98);
+         border-color: #ffffff;
+         color: #00e0ff;
+         box-shadow: 0 0 10px rgba(0, 224, 255, 0.6);
+     }
+}
+
+@media (max-width: 768px) {
+    .profilePhoto { width: 150px; height: 150px; margin-bottom: 20px; }
+    .photoContainer::before { filter: blur(30px); opacity: 0.25; }
+    .photoContainer:hover::before { filter: blur(40px); }
+    .name { font-size: 3em; }
+    .tagline { font-size: 1.6em; margin-bottom: 0.5em;}
+    .introLine { font-size: 1em; }
+    .exploreButton { font-size: 1.1em; padding: 12px 25px; letter-spacing: 1px;}
+}
+
+
+.animatedTitles {
+    height: 2.2rem;           /* reserve space so it never jumps layout */
+    overflow: hidden;
+    margin-top: 0.5rem;
+  }
+  
+  .animatedTitle {
+    display: inline-block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    color: #8b93af;
+    white-space: nowrap;
+  }
+  
+  .socialIcons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;             /* space between icons */
+    margin-top: 2rem;
+  }
+  
+  .socialIcon {
+    font-size: 1.8rem;        /* make them larger */
+    color: #00e0ff;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .socialIcon:hover {
+    color: #ffffff;
+    transform: translateY(-3px);
+  }
+  
+  adjust below Explore button
+  .exploreButton + .socialIcons {
+    margin-top: 1.5rem;
+  }

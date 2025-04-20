@@ -1,0 +1,100 @@
+/* Full screen container for the loader */
+/* Handles background, ensures full screen, sits on top with z-index */
+.loaderContainer {
+    position: fixed; /* Fixes it to the viewport */
+    top: 0; /* Align to top edge */
+    left: 0; /* Align to left edge */
+    width: 100vw; /* Make it viewport width */
+    height: 100vh; /* Make it viewport height */
+    background: radial-gradient(circle at top left, #10183b 0%, #04081b 100%); /* Your dark background */
+    z-index: 100; /* Ensure it's on top of all other page content */
+    display: flex; /* Use flexbox for basic centering - handy for debugging or simple layouts */
+    justify-content: center; /* Center children horizontally in flex */
+    align-items: center; /* Center children vertically in flex */
+    overflow: hidden; /* Hide anything that moves outside the viewport */
+    /* The opacity animation for fading out the whole loader is controlled by the component's `exit` prop in Loader.jsx, which App.jsx AnimatePresence triggers. */
+}
+
+/* Container for the Lottie Animation (the fist bump) */
+/* Uses absolute positioning relative to loaderContainer to place animation precisely */
+.characterContainer {
+    position: absolute; /* Position independently within the fixed loaderContainer */
+    /* top, left, and transform will likely be set via inline style in Loader.jsx to handle centering */
+    /* You can set defaults here, but inline style takes precedence. */
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
+
+    /* *** SIZE OF THE LOTTIE CONTAINER - Use INLINE STYLE in Loader.jsx *** */
+    /* While you can set defaults here, it's recommended to control `width` and `height` via the `style` prop on the <motion.div> in Loader.jsx. */
+    /* These are often better controlled directly in JS for responsiveness or specific calculations. */
+    /* Example defaults, these would be overridden by inline styles in JS if present: */
+    /* width: 250px; */
+    /* height: 250px; */
+
+
+    z-index: 20; /* Position the animation layer visually above other elements */
+
+     /* Add background, border, etc. for the container itself here if needed */
+}
+
+/* The LottiePlayer component renders *inside* .characterContainer. */
+/* If the Lottie visuals don't fill the .characterContainer div, check if style={{ width: '100%', height: '100%' }} is needed on the <LottiePlayer> in Loader.jsx */
+/* No other direct styles usually needed for LottiePlayer itself here. */
+
+
+/* The Greeting Text Container (.greetingTextContainer) is NOT part of the Loader component in this simplified setup. */
+/* Styles for the text belong in your Hero component's CSS module. */
+
+
+/* Skip button styles - Positioned fixed in the bottom right relative to loaderContainer */
+/* Its appearance animation is controlled by the useEffect animation sequence in Loader.jsx */
+.skipButton {
+     position: absolute; /* Position relative to the .loaderContainer (which is fixed to the viewport) */
+     bottom: 25px; /* Distance from the bottom edge of the viewport */
+     right: 25px; /* Distance from the right edge of the viewport */
+     background: rgba(255,255,255,0.1); /* Semi-transparent white background */
+     border: 1px solid rgba(255,255,255,0.3); /* Subtle transparent border */
+     border-radius: 8px; /* Rounded corners */
+     padding: 8px 18px; /* Inner spacing within the button */
+     color: rgba(255,255,255,0.8); /* Slightly transparent white text color */
+     font-size: 1em;
+     font-family: 'Outfit', sans-serif; /* Your portfolio font */
+     cursor: pointer; /* Indicates the element is interactive */
+     z-index: 110; /* Higher z-index to ensure it's on top of the loader content */
+     backdrop-filter: blur(5px); /* Optional: Add a blur effect behind the button for a "glassmorphism" look */
+     transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease; /* Smooth transitions for hover effects */
+     /* Its initial hidden state and fade-in animation are handled by Framer Motion variants/controls in Loader.jsx */
+}
+/* Style for the skip button when the user hovers over it */
+.skipButton:hover {
+     background: rgba(255,255,255,0.2); /* Slightly less transparent background on hover */
+     border-color: rgba(255,255,255,0.5); /* More solid border on hover */
+     color: #ffffff; /* Fully white text on hover */
+}
+
+
+/* --- Responsive Adjustments for the Loader --- */
+/* Adjustments for screens up to 768px wide */
+@media (max-width: 768px) {
+    .characterContainer {
+        /* Adjusted size for medium screens (tablets, etc.). These CSS defaults can be overridden by inline styles in Loader.jsx */
+        width: 200px; /* Example - TWEAK */
+        height: 200px; /* Example - TWEAK */
+         /* Positioning likely remains centered */
+    }
+    /* Text container styles are no longer in the Loader */
+    .skipButton { bottom: 20px; right: 20px; padding: 7px 15px; font-size: 0.9em;} /* Adjust button size/position for medium screens */
+}
+
+/* Adjustments for screens up to 480px wide (smaller phones) */
+@media (max-width: 480px) {
+     .characterContainer {
+         /* Adjusted size for small screens (mobile phones). These CSS defaults can be overridden by inline styles in Loader.jsx */
+        width: 150px; /* Example - TWEAK */
+        height: 150px; /* Example - TWEAK */
+         /* Positioning likely remains centered */
+     }
+     /* Text container styles are no longer in the Loader */
+     .skipButton { bottom: 15px; right: 15px; padding: 5px 12px; font-size: 0.8em;} /* Adjust button size/position for small screens */
+}

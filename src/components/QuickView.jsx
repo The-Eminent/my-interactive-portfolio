@@ -1,6 +1,6 @@
 // src/components/QuickView.jsx
-import React, { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
+import React, { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import {
   FaUser,
   FaBriefcase,
@@ -11,11 +11,11 @@ import {
   FaEnvelope,
   FaLinkedinIn,
   FaChartBar
-} from 'react-icons/fa'
-import { content } from '../data/content'
-import styles from '../styles/QuickView.module.css'
+} from 'react-icons/fa';
+import { content } from '../data/content';
+import styles from '../styles/QuickView.module.css';
 
-// SCREEN ENTRY / EXIT VARIANTS
+/* ---------- Animation variants ---------- */
 const screenVariants = {
   initial: { opacity: 0, y: 50 },
   animate: {
@@ -23,14 +23,9 @@ const screenVariants = {
     y: 0,
     transition: { when: 'beforeChildren', staggerChildren: 0.08 }
   },
-  exit: {
-    opacity: 0,
-    y: -50,
-    transition: { duration: 0.5, ease: 'easeIn' }
-  }
-}
+  exit: { opacity: 0, y: -50, transition: { duration: 0.5, ease: 'easeIn' } }
+};
 
-// STAGGERED ITEM VARIANTS
 const itemVariants = {
   initial: { opacity: 0, y: 40 },
   animate: {
@@ -38,59 +33,77 @@ const itemVariants = {
     y: 0,
     transition: { duration: 0.6, ease: 'easeOut' }
   }
-}
+};
 
-// QUICK HOVER TRANSITION
-const hoverTransition = { type: 'tween', duration: 0.15, ease: 'easeInOut' }
+const hoverTransition = { type: 'tween', duration: 0.15, ease: 'easeInOut' };
 
-// ICON MAPS
+/* ---------- Icon maps ---------- */
 const deviconClassMap = {
   'JavaScript': 'devicon-javascript-plain colored',
-  'React.js': 'devicon-react-original colored',
-  'Node.js': 'devicon-nodejs-plain colored',
+  'React.js'  : 'devicon-react-original colored',
+  'Node.js'   : 'devicon-nodejs-plain colored',
   'Express.js': 'devicon-express-original colored',
-  'Python': 'devicon-python-plain colored',
-  'C': 'devicon-c-plain colored',
-  'C++': 'devicon-cplusplus-plain colored',
-  'MongoDB': 'devicon-mongodb-plain colored',
-  'SQL': 'devicon-postgresql-plain colored',
-  'Git': 'devicon-git-plain colored',
-  'Github': 'devicon-github-original',
-  'GCP': 'devicon-googlecloud-plain colored',
-  'Flask': 'devicon-flask-original',
-  'HTML': 'devicon-html5-plain colored',
-  'CSS': 'devicon-css3-plain colored'
-}
+  'Python'    : 'devicon-python-plain colored',
+  'C'         : 'devicon-c-plain colored',
+  'C++'       : 'devicon-cplusplus-plain colored',
+  'MongoDB'   : 'devicon-mongodb-plain colored',
+  'SQL'       : 'devicon-postgresql-plain colored',
+  'Git'       : 'devicon-git-plain colored',
+  'Github'    : 'devicon-github-original',
+  'GCP'       : 'devicon-googlecloud-plain colored',
+  'Flask'     : 'devicon-flask-original',
+  'HTML'      : 'devicon-html5-plain colored',
+  'CSS'       : 'devicon-css3-plain colored'
+};
+
 const fallbackIcons = {
   'Power BI': <FaChartBar className={styles.iconFallback} />,
-  'Tableau': <FaChartBar className={styles.iconFallback} />
-}
+  'Tableau' : <FaChartBar className={styles.iconFallback} />
+};
+
 const sectionIcons = {
-  about: <FaUser />,
-  experience: <FaBriefcase />,
-  projects: <FaGithub />,
-  skills: <FaCode />,
-  education: <FaGraduationCap />,
+  about       : <FaUser />,
+  experience  : <FaBriefcase />,
+  projects    : <FaGithub />,
+  skills      : <FaCode />,
+  education   : <FaGraduationCap />,
   achievements: <FaTrophy />,
-  contact: <FaEnvelope />
-}
+  contact     : <FaEnvelope />
+};
 
 export default function QuickView({ onBack }) {
-  const scrollRef = useRef(null)
-  const origOverflow = useRef(document.body.style.overflow)
+  const scrollRef = useRef(null);
 
+  /* --------------------------------------------------
+     On mount: scroll to top & wire global wheel proxy
+  -------------------------------------------------- */
   useEffect(() => {
-    document.body.style.overflow = 'hidden'
+    // Smoothly scroll container to top after a short delay
     const t = setTimeout(() => {
-      scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
-    }, 600)
-    return () => {
-      document.body.style.overflow = origOverflow.current
-      clearTimeout(t)
-    }
-  }, [])
+      scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 600);
 
-  const { about, skills, experience, projects, education, achievements, contact } = content
+    // Forward every wheel event on the window to the container
+    const handleWheel = (e) => {
+      if (scrollRef.current) {
+        // Prevent the page from trying to scroll the <body>
+        e.preventDefault();
+        scrollRef.current.scrollBy({ top: e.deltaY });
+      }
+    };
+    window.addEventListener('wheel', handleWheel, { passive: false });
+
+    // Cleanup
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener('wheel', handleWheel);
+    };
+  }, []);
+
+  const {
+    about, skills, experience, projects,
+    education, achievements, contact
+  } = content;
 
   return (
     <motion.div
@@ -101,8 +114,7 @@ export default function QuickView({ onBack }) {
       animate="animate"
       exit="exit"
     >
-
-      {/* About */}
+      {/* ---------- About ---------- */}
       {about && (
         <motion.section
           className={styles.section}
@@ -116,7 +128,7 @@ export default function QuickView({ onBack }) {
         </motion.section>
       )}
 
-      {/* Experience */}
+      {/* ---------- Experience ---------- */}
       {experience?.length > 0 && (
         <motion.section
           className={styles.section}
@@ -145,16 +157,14 @@ export default function QuickView({ onBack }) {
               </h3>
               {exp.date && <span className={styles.date}>{exp.date}</span>}
               <ul>
-                {exp.details.map((d, j) => (
-                  <li key={j}>{d}</li>
-                ))}
+                {exp.details.map((d, j) => <li key={j}>{d}</li>)}
               </ul>
             </motion.div>
           ))}
         </motion.section>
       )}
 
-      {/* Projects */}
+      {/* ---------- Projects ---------- */}
       {projects?.length > 0 && (
         <motion.section
           className={styles.section}
@@ -196,14 +206,16 @@ export default function QuickView({ onBack }) {
                   </motion.a>
                 )}
               </div>
-              {prj.tech && <span className={styles.tech}>{prj.tech.join(', ')}</span>}
+              {prj.tech && (
+                <span className={styles.tech}>{prj.tech.join(', ')}</span>
+              )}
               <p>{prj.description}</p>
             </motion.div>
           ))}
         </motion.section>
       )}
 
-      {/* Skills */}
+      {/* ---------- Skills ---------- */}
       {skills?.length > 0 && (
         <motion.section
           className={styles.section}
@@ -221,10 +233,7 @@ export default function QuickView({ onBack }) {
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: i * 0.05, ease: 'easeOut', duration: 0.4 }}
-                whileHover={{
-                  scale: 1.1,
-                  transition: hoverTransition
-                }}
+                whileHover={{ scale: 1.1, transition: hoverTransition }}
                 viewport={{ once: true }}
               >
                 {deviconClassMap[skill] ? (
@@ -239,7 +248,7 @@ export default function QuickView({ onBack }) {
         </motion.section>
       )}
 
-      {/* Education */}
+      {/* ---------- Education ---------- */}
       {education?.length > 0 && (
         <motion.section
           className={styles.section}
@@ -289,7 +298,7 @@ export default function QuickView({ onBack }) {
         </motion.section>
       )}
 
-      {/* Achievements */}
+      {/* ---------- Achievements ---------- */}
       {achievements?.length > 0 && (
         <motion.section
           className={styles.section}
@@ -300,14 +309,12 @@ export default function QuickView({ onBack }) {
         >
           <h2>{sectionIcons.achievements} Achievements</h2>
           <ul>
-            {achievements.map((a, i) => (
-              <li key={i}>{a}</li>
-            ))}
+            {achievements.map((a, i) => <li key={i}>{a}</li>)}
           </ul>
         </motion.section>
       )}
 
-      {/* Contact */}
+      {/* ---------- Contact ---------- */}
       {(contact.linkedIn || contact.github || contact.email) && (
         <motion.section
           className={styles.section}
@@ -330,11 +337,7 @@ export default function QuickView({ onBack }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.contactLink}
-                  whileHover={{
-                    color: '#fff',
-                    x: 5,
-                    transition: hoverTransition
-                  }}
+                  whileHover={{ color: '#fff', x: 5, transition: hoverTransition }}
                 >
                   <FaLinkedinIn className={styles.contactIcon} />
                   <span className={styles.contactText}>LinkedIn</span>
@@ -353,11 +356,7 @@ export default function QuickView({ onBack }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.contactLink}
-                  whileHover={{
-                    color: '#fff',
-                    x: 5,
-                    transition: hoverTransition
-                  }}
+                  whileHover={{ color: '#fff', x: 5, transition: hoverTransition }}
                 >
                   <FaGithub className={styles.contactIcon} />
                   <span className={styles.contactText}>GitHub</span>
@@ -374,11 +373,7 @@ export default function QuickView({ onBack }) {
                 <motion.a
                   href={`mailto:${contact.email}`}
                   className={styles.contactLink}
-                  whileHover={{
-                    color: '#fff',
-                    x: 5,
-                    transition: hoverTransition
-                  }}
+                  whileHover={{ color: '#fff', x: 5, transition: hoverTransition }}
                 >
                   <FaEnvelope className={styles.contactIcon} />
                   <span className={styles.contactText}>Email</span>
@@ -389,7 +384,7 @@ export default function QuickView({ onBack }) {
         </motion.section>
       )}
 
-      {/* Back Button */}
+      {/* ---------- Back button ---------- */}
       <motion.div className={styles.backButtonContainer} variants={itemVariants}>
         <motion.button
           className={styles.backButton}
@@ -404,5 +399,5 @@ export default function QuickView({ onBack }) {
         </motion.button>
       </motion.div>
     </motion.div>
-  )
+  );
 }

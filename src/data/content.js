@@ -107,25 +107,51 @@ export const content = {
   ],
 
   achievements: [
-    'Runner-up – Smart India Hackathon 2023 (Top 1% out of 500+ teams)',
-    'GDSC Core Member – Organized tech events and marketing outreach',
-    '30 Days of Google Cloud – Completed Cloud Engineering & ML tracks'
+    'Runner-up - Smart India Hackathon 2023 (Top 1% out of 500+ teams)',
+    'GDSC Core Member - Organized tech events and marketing outreach',
+    '30 Days of Google Cloud - Completed Cloud Engineering & ML tracks'
   ],
 
   // — NEW —
   certifications: [
+    { name:'Research Publication - Project Approval & Cost Optimization', org:'ICICES Conference', date:'2023', logo:'icices-research.png', link:'https://drive.google.com/file/d/1gwKLZkFiOZEFGJ9I_jKLq39-BR0tjw3x/view?usp=sharing' },
+    { name:'Research Publication - Multi-Cloud Resource Allocation', org:'IEEE MRTM 2023', date:'2023', logo:'mrtm-research.png', link:'https://drive.google.com/file/d/1IDEouEsHkkm-vxjVK52woc6Fr2QfnTV1/view?usp=sharing' },
+    { name:'CCNAv7 : Intro to Networks', org:'Cisco', date:'2023', logo:'ccna.png', link:'https://drive.google.com/file/d/1Onuln30hV4scHA4K3M9IhZmegOTC348n/view?usp=sharing' },
+    { name:'Google Cloud Program - Cloud & ML Tracks', org:'GDSC', date:'2021', logo:'gcp-cloud.png', link:'https://drive.google.com/file/d/1Dzct-8Ia8VvfBfEDE-AXKvFfkLBm81xU/view?usp=sharing' },
     { name:'TCS iON Career Edge', org:'TCS', date:'2023', logo:'tcsion.png', link:'https://drive.google.com/file/d/1bUe2Dj0chLXfNS5bsr2xh4HVkyHKgImG/view?usp=sharing' },
-    { name:'Google Cloud Platform Traning', org:'GDSC', date:'2021', logo:'gcp-cloud.png', link:'https://drive.google.com/file/d/1Dzct-8Ia8VvfBfEDE-AXKvFfkLBm81xU/view?usp=sharing' },
+    { name:'Microsoft Learn AI Skills Challenge', org:'Microsoft', date:'2023', logo:'microsoft-ai.png', link:'https://drive.google.com/file/d/1guzxKE0eaGOmEVlMjA6HEtH_IJ9vX-aU/view?usp=sharing' },
     { name:'Uber Hacktag 2.0', org:'Uber', date:'2022', logo:'uber-hacktag.png', link:'https://drive.google.com/file/d/1WIJaf-GPmMLpn6EE5jWFyRQNfsYgAIhn/view?usp=sharing' },
     
     // add more…
   ],
 
   interests: [
-    { name: 'Chess',    icon: 'fa-solid fa-chess',    caption: 'Sharpening logic, one move at a time' },
-    { name: 'Fitness',  icon: 'fa-solid fa-dumbbell', caption: 'Fueling focus through strength' },
-    { name: 'Football', icon: 'fa-solid fa-futbol',   caption: 'Teamwork, tactics, and passion on the field' }
-  ],
+    {
+      name: 'Chess',
+      icon: 'fa-solid fa-chess',
+      caption: 'Strategy is second nature - thanks to chess'
+    },
+    {
+      name: 'Football',
+      icon: 'fa-solid fa-futbol',
+      caption: 'Teamwork, focus, and fast decision-making'
+    },
+    {
+      name: 'Book Reading',
+      icon: 'fa-solid fa-book-open',
+      caption: 'New to the shelf-life 📚 - got a rec?'
+    },
+    {
+      name: 'Photography',
+      icon: 'fa-solid fa-camera-retro',
+      caption: 'Love capturing moments that speak for themselves'
+    },
+    {
+      name: 'Music',
+      icon: 'fa-solid fa-music',
+      caption: 'Classical tunes have my focus lately'
+    }
+  ],  
   
   contact: {
     email: 'kuldeepsingh@csu.fullerton.edu', // Your actual email

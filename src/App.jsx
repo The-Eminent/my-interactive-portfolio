@@ -117,7 +117,7 @@ function App() {
                     display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',
                     position: 'relative', width: '100%', height: '100%'
                 }}>
-                <p>Vibe Mode: ✨ Under Construction ✨</p>
+                <p>Vibe Mode: ✨ I'm on it. ✨</p>
                 <motion.button
                     whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
                     style={{marginTop: '20px', padding: '10px 20px', fontSize: '0.8em', backgroundColor: 'rgba(0, 224, 255, 0.1)', border: '1px solid rgba(0, 224, 255, 0.3)', borderRadius: '5px', color: '#ffffff', cursor: 'pointer'}}

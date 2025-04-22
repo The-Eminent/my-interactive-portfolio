@@ -1,5 +1,7 @@
 /* src/styles/QuickView.module.css */
-/* Updated hover‑return speed on skill tiles, and education always left‑aligned */
+/* ------------------------------------------------------------------ */
+/* GLOBAL LAYOUT & SECTIONS                                           */
+/* ------------------------------------------------------------------ */
 
 .container {
   width: 100%;
@@ -12,6 +14,7 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
 .container::-webkit-scrollbar {
   display: none;
 }
@@ -20,6 +23,7 @@
   margin-bottom: 50px;
   padding: 0 10px;
 }
+
 .section:last-of-type {
   margin-bottom: 150px;
 }
@@ -28,21 +32,30 @@
   font-size: 1.8em;
   font-family: 'Outfit', sans-serif;
   color: #00e0ff;
-  text-shadow: 0 0 10px rgba(0, 224, 255, 0.4);
+  text-shadow: 0 0 10px rgba(0, 224, 255, .4);
   margin-bottom: 18px;
-  border-bottom: 2px solid rgba(0, 224, 255, 0.3);
+  border-bottom: 2px solid rgba(0, 224, 255, .3);
   padding-bottom: 8px;
   display: flex;
-  align-items: center;
   gap: 15px;
+  align-items: center;
   font-weight: bold;
   position: relative;
 }
+
 .section h2 svg {
   font-size: 1.2em;
   color: #00e0ff;
   flex-shrink: 0;
 }
+
+.section h2 img {
+  width: 1.4em;
+  height: 1.4em;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
 .section h2::after {
   content: '';
   position: absolute;
@@ -51,8 +64,9 @@
   height: 2px;
   width: 0;
   background: #00e0ff;
-  transition: width 0.15s ease;
+  transition: width .15s ease;
 }
+
 .section h2:hover::after {
   width: 100%;
 }
@@ -65,22 +79,28 @@
   color: #f0f0f0;
   text-align: left;
 }
+
 .section ul {
   list-style: disc inside;
   padding-left: 0;
 }
+
 .section ul li {
   margin-bottom: 10px;
 }
 
+/* ------------------------------------------------------------------ */
+/* CARD BASE                                                          */
+/* ------------------------------------------------------------------ */
+
 .card {
-  background-color: rgba(30, 30, 50, 0.5);
-  border: 1px solid rgba(70, 70, 100, 0.3);
+  background: rgba(30, 30, 50, .5);
+  border: 1px solid rgba(70, 70, 100, .3);
   border-radius: 8px;
   padding: 25px;
   margin-bottom: 25px;
   text-align: left;
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
+  transition: box-shadow .15s ease, transform .15s ease;
 }
 
 .card h3 {
@@ -92,8 +112,9 @@
   display: inline-block;
   margin-right: 15px;
 }
+
 .card h3 em {
-  font-size: 0.9em;
+  font-size: .9em;
   color: #a0a0b0;
   font-style: italic;
   font-weight: normal;
@@ -102,11 +123,12 @@
 .card .date,
 .card .tech {
   font-family: 'Inter', sans-serif;
-  font-size: 0.9em;
+  font-size: .9em;
   color: #a0a0b0;
   margin-bottom: 18px;
   display: block;
 }
+
 .card .tech {
   color: #00e0ff;
   font-weight: bold;
@@ -124,30 +146,42 @@
   color: #00e0ff;
   font-size: 1.5em;
   text-decoration: none;
-  transition: color 0.15s ease, transform 0.15s ease;
+  transition: color .15s ease, transform .15s ease;
 }
+
 .githubIconLink:hover {
   color: #fff;
 }
 
+/* ------------------------------------------------------------------ */
+/* CONTACT LIST                                                       */
+/* ------------------------------------------------------------------ */
+
 .contactList {
   padding: 0;
 }
+
 .contactList li {
   list-style: none;
   margin-bottom: 15px;
 }
+
 .contactLink {
   display: inline-flex;
   align-items: center;
   gap: 12px;
   color: #00e0ff;
   text-decoration: none;
-  transition: color 0.15s ease, transform 0.15s ease;
+  transition: color .15s ease, transform .15s ease;
 }
+
 .contactLink:hover {
   color: #fff;
 }
+
+/* ------------------------------------------------------------------ */
+/* SKILLS GRID                                                        */
+/* ------------------------------------------------------------------ */
 
 .skillsGrid {
   display: grid;
@@ -161,7 +195,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.15s ease;
+  transition: transform .15s ease;
 }
 
 .skillTile i,
@@ -172,35 +206,42 @@
 }
 
 .skillLabel {
-  font-size: 0.85rem;
+  font-size: .85rem;
   color: #f0f0f0;
 }
 
-/* Education: always row‑layout, left‑aligned */
+/* ------------------------------------------------------------------ */
+/* EDUCATION                                                          */
+/* ------------------------------------------------------------------ */
+
 .educationCardContent {
   display: flex;
   align-items: center;
   gap: 20px;
-  flex-direction: row;
   text-align: left;
 }
+
 .educationText {
   flex-grow: 1;
   text-align: left;
 }
+
 .educationText h3,
 .educationText .text,
 .educationText .date {
-  text-align: left;
   display: block;
+  text-align: left;
 }
+
 .educationText h3 {
   margin-bottom: 4px;
 }
+
 .educationText .text {
   margin-bottom: 4px;
   font-style: normal;
 }
+
 .educationText .date {
   margin-bottom: 0;
 }
@@ -213,21 +254,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid rgba(0, 224, 255, 0.3);
+  border: 1px solid rgba(0, 224, 255, .3);
   border-radius: 8px;
-  background-color: rgba(0, 224, 255, 0.05);
-  box-shadow: 0 0 8px rgba(0, 224, 255, 0.2);
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
-}
-.educationLogoImg {
-  display: block;
-  max-width: 90%;
-  max-height: 90%;
-  object-fit: contain;
-  border-radius: inherit;
+  background: rgba(0, 224, 255, .05);
+  box-shadow: 0 0 8px rgba(0, 224, 255, .2);
+  transition: box-shadow .15s ease, transform .15s ease;
 }
 
-/* Back Button */
+.educationLogoImg {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+}
+
+/* ------------------------------------------------------------------ */
+/* BACK BUTTON                                                        */
+/* ------------------------------------------------------------------ */
+
 .backButtonContainer {
   position: fixed;
   bottom: 30px;
@@ -235,34 +278,271 @@
   transform: translateX(-50%);
   z-index: 90;
 }
+
 .backButton {
-  background: rgba(0, 224, 255, 0.1);
-  border: 1px solid rgba(0, 224, 255, 0.4);
+  background: rgba(0, 224, 255, .1);
+  border: 1px solid rgba(0, 224, 255, .4);
   border-radius: 5px;
   padding: 12px 25px;
   font-size: 1em;
-  color: #ffffff;
+  color: #fff;
   cursor: pointer;
   font-family: 'Inter', sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
-  box-shadow: 0 0 10px rgba(0, 224, 255, 0.4);
-  transition: all 0.15s ease;
-}
-.backButton:hover {
-  background: rgba(0, 224, 255, 0.2);
-  border-color: #00e0ff;
-  color: #00e0ff;
-  box-shadow: 0 0 18px rgba(0, 224, 255, 0.7);
-}
-.backButton:active {
-  transform: scale(0.97);
-  border-color: #00e0ff;
-  color: #00e0ff;
-  box-shadow: 0 0 10px rgba(0, 224, 255, 0.6);
+  box-shadow: 0 0 10px rgba(0, 224, 255, .4);
+  transition: all .15s ease;
 }
 
-/* Smooth scroll */
+.backButton:hover {
+  background: rgba(0, 224, 255, .2);
+  border-color: #00e0ff;
+  color: #00e0ff;
+  box-shadow: 0 0 18px rgba(0, 224, 255, .7);
+}
+
+.backButton:active {
+  transform: scale(.97);
+  border-color: #00e0ff;
+  color: #00e0ff;
+  box-shadow: 0 0 10px rgba(0, 224, 255, .6);
+}
+
+/* smooth scroll for in‑page links */
 html {
   scroll-behavior: smooth;
+}
+
+/* ------------------------------------------------------------------ */
+/* LEGACY DESKTOP TOC (no longer used but kept for reference)         */
+/* ------------------------------------------------------------------ */
+/* .toc … (unchanged, can remove if desired)                          */
+
+/* ------------------------------------------------------------------ */
+/* CERTIFICATIONS                                                     */
+/* ------------------------------------------------------------------ */
+
+.certGrid {
+  display: flex;
+  /* easier centering, even for one item  */
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.certCard {
+  width: clamp(180px, 28vw, 240px);
+  /* never smaller than 180 px, never larger than 240 px */
+  background: rgba(30, 30, 50, .5);
+  border: 1px solid rgba(70, 70, 100, .3);
+  border-radius: 8px;
+  padding: 18px 12px;
+  text-align: center;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.certCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 224, 255, .2);
+}
+
+/* cropped preview fits inside the new card width */
+.certImgBox {
+  width: 100%;
+  aspect-ratio: 4/3;
+  /* keep rectangular look */
+  overflow: hidden;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 224, 255, .25);
+  margin-bottom: 10px;
+}
+
+.certImgBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.certName {
+  font-size: .85rem;
+  color: #f0f0f0;
+}
+
+.certOrg {
+  display: block;
+  font-size: .75rem;
+  color: #a0a0b0;
+}
+
+.certDate {
+  display: block;
+  font-size: .72rem;
+  color: #707090;
+  margin-bottom: 8px;
+}
+
+.certBtn {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 4px 10px;
+  font-size: .75rem;
+  color: #00e0ff;
+  border: 1px solid rgba(0, 224, 255, .4);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all .15s ease;
+}
+
+.certBtn:hover {
+  background: rgba(0, 224, 255, .15);
+  color: #fff;
+}
+
+/* show‑more button (unchanged) */
+.showMoreBtn {
+  margin: 18px auto 0;
+  padding: 6px 18px;
+  background: rgba(0, 224, 255, .12);
+  border: 1px solid rgba(0, 224, 255, .4);
+  color: #00e0ff;
+  font-family: 'Inter', sans-serif;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.showMoreBtn:hover {
+  background: rgba(0, 224, 255, .22);
+  color: #fff;
+}
+
+/* ─────────────────────────────────────────────── */
+/* INTERESTS  –  flip‑card implementation          */
+/* ─────────────────────────────────────────────── */
+.interestsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 28px;
+  justify-items: center;
+  padding: 16px 0;
+}
+
+.interestTile {
+  perspective: 900px;
+  width: 110px;
+  height: 130px;
+}
+
+.interestInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform .5s;
+  border-radius: 10px;                   /* smooth corners on flip */
+}
+
+.interestTile:hover .interestInner {
+  transform: rotateY(180deg);
+}
+
+.interestFace {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  border-radius: inherit;
+}
+
+/* FRONT  ─ icon + label */
+.interestIcon   { font-size: 2.6rem; color: #61dafb; margin-bottom: 8px; }
+.interestLabel  { font-size: 0.9rem;  font-family: 'Outfit', sans-serif; }
+
+/* BACK   ─ caption on glass card */
+.interestBack {
+  transform: rotateY(180deg);
+  backdrop-filter: blur(8px);
+  background: rgba(0, 224, 255, 0.08);
+  border: 1px solid rgba(0, 224, 255, 0.25);
+  box-shadow: 0 0 12px rgba(0, 224, 255, 0.2);
+  padding: 10px;
+}
+
+.interestCaption {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #00e0ff;
+  text-align: center;
+  line-height: 1.3;
+  text-shadow: 0 0 6px rgba(0, 224, 255, .6);
+}
+/* ------------------------------------------------------------------ */
+/* FLOATING NAVIGATION (TOP‑LEFT)                                     */
+/* ------------------------------------------------------------------ */
+
+.navToggle {
+  position: fixed;
+  top: 28px;
+  left: 28px;
+  z-index: 120;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(0, 224, 255, .18);
+  border: 1px solid rgba(0, 224, 255, .5);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00e0ff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 0 14px rgba(0, 224, 255, .3);
+  transition: all .25s ease;
+}
+
+.navToggle:hover {
+  box-shadow: 0 0 20px rgba(0, 224, 255, .6);
+  background: rgba(0, 224, 255, .28);
+}
+
+.floatingNav {
+  position: fixed;
+  top: 96px;
+  left: 28px;
+  z-index: 110;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: rgba(10, 20, 40, .9);
+  border: 1px solid rgba(0, 224, 255, .4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.floatingNav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #a0cfe6;
+  font-size: .95rem;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.floatingNav a:hover {
+  color: #fff;
+}
+
+.activeNav {
+  color: #00e0ff !important;
 }

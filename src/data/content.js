@@ -8,12 +8,28 @@ export const content = {
 
 🧠 What drives me? Curiosity, collaboration, and the thrill of solving the unsolved - whether it’s a stubborn bug or a clever tactic. Let’s build something meaningful.`,
 
-  skills: [
-    'JavaScript', 'React.js', 'Node.js', 'Express.js', 'Python', 'C', 'C++',
-    'MongoDB', 'SQL', 'Power BI', 'Tableau', 'Git', 'Github', 'GCP',
-    'Flask', 'HTML', 'CSS'
-    // Add more skills here
-  ],
+skills: [
+  // 🚀 In-Demand Core Skills
+  'Python', 'JavaScript', 'React.js', 'Node.js', 'SQL',
+
+  // 🌐 Web Development & Frameworks
+  'Express.js', 'Flask', 'HTML', 'CSS', 'Tailwind',
+
+  // 📊 Data Analytics & Visualization
+  'Power BI', 'Tableau', 'Excel', 'R', 'RStudio',
+
+  // ☁️ Cloud & DevOps
+  'GCP', 'Docker', 'Kubernetes', 'Github Actions',
+
+  // 🛠️ Tools
+  'Git', 'Github',
+
+  // 🗄️ Databases
+  'MongoDB', 'Cassandra',
+
+  // 👨‍💻 Other Languages
+  'C', 'C++'
+],
 
   projects: [
     {
@@ -57,11 +73,12 @@ export const content = {
   experience: [
     {
       company: 'California State University - Fullerton',
-      role: 'Student Assistant',
-      date: 'Apr 2025 - current',
+      role: 'Graduate Research Assistant',
+      date: 'March 2025 - Current',
       details: [
-        'Managed large-scale datasets using Excel and Python, automating processes and reducing data processing time.',
-        'Validated executive profiles via social media analytics, creating structured datasets with improved accuracy.'
+        'Analyze executive datasets using Python (Pandas, NumPy) to uncover patterns in CEO characteristics, compensation, and firm performance.',
+        'Build interactive dashboards with Power BI and matplotlib to visualize insights on leadership trends and business outcomes.',
+        'Collaborated with Dr. Weng on research design, automated data extraction, and performed statistical analysis for academic publications.',
       ]
     },
     {
@@ -114,15 +131,102 @@ export const content = {
 
   // — NEW —
   certifications: [
-    { name:'Research Publication - Project Approval & Cost Optimization', org:'ICICES Conference', date:'2023', logo:'icices-research.png', link:'https://drive.google.com/file/d/1gwKLZkFiOZEFGJ9I_jKLq39-BR0tjw3x/view?usp=sharing' },
-    { name:'Research Publication - Multi-Cloud Resource Allocation', org:'IEEE MRTM 2023', date:'2023', logo:'mrtm-research.png', link:'https://drive.google.com/file/d/1IDEouEsHkkm-vxjVK52woc6Fr2QfnTV1/view?usp=sharing' },
-    { name:'CCNAv7 : Intro to Networks', org:'Cisco', date:'2023', logo:'ccna.png', link:'https://drive.google.com/file/d/1Onuln30hV4scHA4K3M9IhZmegOTC348n/view?usp=sharing' },
-    { name:'Google Cloud Program - Cloud & ML Tracks', org:'GDSC', date:'2021', logo:'gcp-cloud.png', link:'https://drive.google.com/file/d/1Dzct-8Ia8VvfBfEDE-AXKvFfkLBm81xU/view?usp=sharing' },
-    { name:'TCS iON Career Edge', org:'TCS', date:'2023', logo:'tcsion.png', link:'https://drive.google.com/file/d/1bUe2Dj0chLXfNS5bsr2xh4HVkyHKgImG/view?usp=sharing' },
-    { name:'Microsoft Learn AI Skills Challenge', org:'Microsoft', date:'2023', logo:'microsoft-ai.png', link:'https://drive.google.com/file/d/1guzxKE0eaGOmEVlMjA6HEtH_IJ9vX-aU/view?usp=sharing' },
-    { name:'Uber Hacktag 2.0', org:'Uber', date:'2022', logo:'uber-hacktag.png', link:'https://drive.google.com/file/d/1WIJaf-GPmMLpn6EE5jWFyRQNfsYgAIhn/view?usp=sharing' },
-    
-    // add more…
+    // 🏆 High-Impact Skill Badges (Cloud, ML, DevOps)
+    {
+      name: 'Cloud Architecture: Design, Implement, and Manage',
+      org: 'Google Cloud',
+      date: '2022',
+      logo: 'gcp-architecture.png',
+      link: 'https://www.credly.com/badges/818e53dd-5479-4480-8cd3-940a44d08fda/public_url'
+    },
+    {
+      name: 'Deploy Kubernetes Applications on Google Cloud',
+      org: 'Google Cloud',
+      date: '2021',
+      logo: 'gcp-kubernetes.png',
+      link: 'https://www.credly.com/badges/61db90cf-b7a0-44f7-b21e-eb5d1700cb65/public_url'
+    },
+    {
+      name: 'Build a Secure Google Cloud Network',
+      org: 'Google Cloud',
+      date: '2021',
+      logo: 'gcp-secure-network.png',
+      link: 'https://www.credly.com/badges/612e5dd6-0d6a-40e6-9162-3bbc496528dc/public_url'
+    },
+    {
+      name: 'Implement DevOps Workflows in Google Cloud',
+      org: 'Google Cloud',
+      date: '2022',
+      logo: 'gcp-devops.png',
+      link: 'https://www.credly.com/badges/31882679-3edb-4068-bb5d-68186032a766/public_url'
+    },
+    {
+      name: 'Engineer Data for Predictive Modeling with BigQuery ML',
+      org: 'Google Cloud',
+      date: '2021',
+      logo: 'gcp-bigquery-ml.png',
+      link: 'https://www.credly.com/badges/b86c2782-25ab-480a-b14e-67477f75c539/public_url'
+    },
+    {
+      name: '5-Day Generative AI Intensive',
+      org: 'Kaggle',
+      date: '2024',
+      logo: 'kaggle-genai.png',
+      link: 'https://www.kaggle.com/certification/badges/computerjock/96'
+    },
+  
+    // 🎓 Academic Publications & Top Certs
+    {
+      name:'Research Publication - Project Approval & Cost Optimization',
+      org:'ICICES Conference',
+      date:'2023',
+      logo:'icices-research.png',
+      link:'https://drive.google.com/file/d/1gwKLZkFiOZEFGJ9I_jKLq39-BR0tjw3x/view?usp=sharing'
+    },
+    {
+      name:'Research Publication - Multi-Cloud Resource Allocation',
+      org:'IEEE MRTM 2023',
+      date:'2023',
+      logo:'mrtm-research.png',
+      link:'https://drive.google.com/file/d/1IDEouEsHkkm-vxjVK52woc6Fr2QfnTV1/view?usp=sharing'
+    },
+    {
+      name:'CCNAv7 : Intro to Networks',
+      org:'Cisco',
+      date:'2023',
+      logo:'ccna.png',
+      link:'https://drive.google.com/file/d/1Onuln30hV4scHA4K3M9IhZmegOTC348n/view?usp=sharing'
+    },
+  
+    // 📜 Other Recognized Certs
+    {
+      name:'Microsoft Learn AI Skills Challenge',
+      org:'Microsoft',
+      date:'2023',
+      logo:'microsoft-ai.png',
+      link:'https://drive.google.com/file/d/1guzxKE0eaGOmEVlMjA6HEtH_IJ9vX-aU/view?usp=sharing'
+    },
+    {
+      name:'TCS iON Career Edge',
+      org:'TCS',
+      date:'2023',
+      logo:'tcsion.png',
+      link:'https://drive.google.com/file/d/1bUe2Dj0chLXfNS5bsr2xh4HVkyHKgImG/view?usp=sharing'
+    },
+    {
+      name:'Google Cloud Program - Cloud & ML Tracks',
+      org:'GDSC',
+      date:'2021',
+      logo:'gcp-cloud.png',
+      link:'https://drive.google.com/file/d/1Dzct-8Ia8VvfBfEDE-AXKvFfkLBm81xU/view?usp=sharing'
+    },
+    {
+      name:'Uber Hacktag 2.0',
+      org:'Uber',
+      date:'2022',
+      logo:'uber-hacktag.png',
+      link:'https://drive.google.com/file/d/1WIJaf-GPmMLpn6EE5jWFyRQNfsYgAIhn/view?usp=sharing'
+    }
   ],
 
   interests: [

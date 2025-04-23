@@ -134,7 +134,7 @@ const Hero = ({ name, tagline, onQuickViewClick, onVibeModeClick }) => {
           >
             Quick View
           </motion.button>
-          <motion.button
+          {/* <motion.button
             className={styles.exploreButton}
             variants={mainButtonVariants}
             initial="hidden"
@@ -145,7 +145,7 @@ const Hero = ({ name, tagline, onQuickViewClick, onVibeModeClick }) => {
             whileTap={{ scale: 0.95 }}
           >
             Vibe Mode
-          </motion.button>
+          </motion.button> */}
         </div>
 
         {/* Social icons footer */}

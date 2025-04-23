@@ -21,7 +21,32 @@ const itemVariants = {
 const hoverTransition = { type: 'tween', duration: 0.15, ease: 'easeInOut' };
 
 /* ----- icon maps ----- */
-const deviconClassMap = { JavaScript: 'devicon-javascript-plain colored', 'React.js': 'devicon-react-original colored', 'Node.js': 'devicon-nodejs-plain colored', 'Express.js': 'devicon-express-original colored', Python: 'devicon-python-plain colored', C: 'devicon-c-plain colored', 'C++': 'devicon-cplusplus-plain colored', MongoDB: 'devicon-mongodb-plain colored', SQL: 'devicon-azuresqldatabase-plain', Git: 'devicon-git-plain colored', Github: 'devicon-github-original', GCP: 'devicon-googlecloud-plain colored', Flask: 'devicon-flask-original', HTML: 'devicon-html5-plain colored', CSS: 'devicon-css3-plain colored' };
+const deviconClassMap = {
+  JavaScript: 'devicon-javascript-plain colored',
+  'React.js': 'devicon-react-original colored',
+  'Node.js': 'devicon-nodejs-plain colored',
+  'Express.js': 'devicon-express-original colored',
+  Python: 'devicon-python-plain colored',
+  C: 'devicon-c-plain colored',
+  'C++': 'devicon-cplusplus-plain colored',
+  MongoDB: 'devicon-mongodb-plain colored',
+  SQL: 'devicon-azuresqldatabase-plain',
+  Git: 'devicon-git-plain colored',
+  Github: 'devicon-github-original',
+  GCP: 'devicon-googlecloud-plain colored',
+  Flask: 'devicon-flask-original',
+  HTML: 'devicon-html5-plain colored',
+  CSS: 'devicon-css3-plain colored',
+  Cassandra: 'devicon-cassandra-plain',
+  'Github Actions': 'devicon-githubactions-plain',
+  RStudio: 'devicon-rstudio-plain',
+  R: 'devicon-r-plain',
+  Tailwind: 'devicon-tailwindcss-original',
+  Docker: 'devicon-docker-plain',
+  Kubernetes: 'devicon-kubernetes-plain',
+
+
+};
 const fallbackIcons = { 'Power BI': <FaChartBar className={styles.iconFallback} />, Tableau: <FaChartBar className={styles.iconFallback} /> };
 
 const iconImg = (src) => (
@@ -62,7 +87,7 @@ export default function QuickView({ onBack }) {
     { id: 'projects', label: 'Projects' },
     { id: 'skills', label: 'Skills' },
     { id: 'education', label: 'Education' },
-    { id: 'certifications', label: 'Certs' },
+    { id: 'certifications', label: 'Certifications & Badges' },
     { id: 'achievements', label: 'Achievements' },
     { id: 'interests', label: 'Beyond the Code' },
     { id: 'contact', label: 'Contact' }
@@ -206,7 +231,7 @@ export default function QuickView({ onBack }) {
       {certifications?.length > 0 && (
         <motion.section id="certifications" className={styles.section}
           variants={itemVariants} initial="initial" whileInView="animate" viewport={{ once: true }}>
-          <h2>{sectionIcons.certifications} Certifications</h2>
+          <h2>{sectionIcons.certifications} Certifications & Badges</h2>
           <div className={styles.certGrid}>
             {(showAllCerts ? certifications : certifications.slice(0, 3)).map((c, i) => (
               <motion.div key={i} className={styles.certCard}
@@ -231,6 +256,8 @@ export default function QuickView({ onBack }) {
           )}
         </motion.section>
       )}
+
+
 
       {/* ---------- Achievements ---------- */}
       {achievements?.length > 0 && (

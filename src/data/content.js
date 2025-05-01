@@ -76,9 +76,9 @@ skills: [
       role: 'Graduate Research Assistant',
       date: 'March 2025 - Current',
       details: [
-        'Analyze executive datasets using Python (Pandas, NumPy) to uncover patterns in CEO characteristics, compensation, and firm performance.',
-        'Build interactive dashboards with Power BI and matplotlib to visualize insights on leadership trends and business outcomes.',
-        'Collaborated with Dr. Weng on research design, automated data extraction, and performed statistical analysis for academic publications.',
+        'Analyze complex executive and organizational datasets using Python, pandas, and SQL to identify trends in leadership traits, compensation, and firm performance.',
+        'Develop interactive dashboards with Power BI and matplotlib to visualize insights on corporate leadership, political affiliations, and business outcomes.',
+        'Automate data collection workflows from public sources and apply statistical techniques to support academic research and data-driven publications.',
       ]
     },
     {

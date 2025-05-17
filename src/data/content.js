@@ -33,6 +33,12 @@ skills: [
 
   projects: [
     {
+      title: 'IgnisAI Real‑Time Wildfire Monitoring & Prediction',
+      tech: ['React', 'Mapbox GL JS', 'Node.js/Express', 'MongoDB', 'Python','TensorFlow','scikit‑learn'],
+      description: 'I built a full-stack web application that ingests NASA FIRMS fire detections alongside live weather and elevation data and stores them in MongoDB. I then implemented Gradient Boosting models to classify whether a fire will spread (AUC 0.71, 65% accuracy) and to regress its spread distance (RMSE 1.35 km). To serve predictions, I spawn a Python inference service that returns results in under 200 ms. Finally, I render interactive GeoJSON “fan” overlays on a responsive Mapbox map, visualizing probabilistic spread direction and distance.',
+      link: 'https://github.com/The-Eminent/AI-Project'
+    },
+    {
       title: 'Project Approval System',
       tech: ['React', 'Node.js', 'MongoDB', 'Express'],
       description: 'A full-stack platform to streamline academic project approvals with user roles, status tracking, and plagiarism integration.',

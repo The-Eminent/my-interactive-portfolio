@@ -92,9 +92,10 @@ skills: [
       role: 'Project Intern',
       date: 'Aug 2023 – Apr 2024',
       details: [
-        'Utilized Cassandra database for data management, reducing query response time by 25%.',
-        'Developed emotion prediction models, increasing accuracy from 70% to 85%.',
-        'Analyzed social media data to identify key patterns, leading to targeted intervention strategies for adolescent depression.'
+        'Contributed to applied machine learning project analyzing emotional trends in social media content for mental health research, processing large-scale datasets.',
+        'Built and evaluated sentiment prediction models achieving 85%+ accuracy in classifying emotional states using NLP pipelines and custom feature extraction.',
+        'Managed large-scale unstructured datasets using Apache Cassandra, optimizing distributed querying and data ingestion for sub-second response times.',
+        'Applied advanced feature engineering, preprocessing, and hyperparameter tuning techniques, improving model classification performance by 15% through systematic evaluation.',
       ]
     },
     {
@@ -102,9 +103,11 @@ skills: [
       role: 'Python Developer Intern',
       date: 'Jan 2023 – June 2023',
       details: [
-        'Enhanced Python-based web development and data visualization techniques through diverse projects.',
-        'Resolved critical bugs, improving application stability by 15%.',
-        'Collaborated with cross-functional teams to optimize code performance, decreasing application response time by 20%.'
+        'Designed and developed a scalable, interactive data visualization dashboard using Dash, Plotly, and Python, enabling real-time analytics for 15+ internal business teams.',
+        'Collaborated with team leads to transform key performance indicators (KPIs) into custom, insight-driven reports, reducing manual reporting efforts by 60%+ and saving 20+ hours weekly.',
+        ' Refactored and optimized Python codebases, improving system performance by 40% and enhancing dashboard responsiveness for better user experience.',
+        'Contributed to the development of internal data analytics pipelines and automation workflows, streamlining business processes and supporting data-driven decision making.',
+        'Applied agile development practices in cross-functional team environment, participating in sprint planning and iterative product improvement cycles.',
       ]
     },
     // Add more experience entries here

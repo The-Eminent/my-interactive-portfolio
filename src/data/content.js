@@ -142,6 +142,13 @@ skills: [
   certifications: [
     // 🏆 High-Impact Skill Badges (Cloud, ML, DevOps)
     {
+      name: 'Machine Learning',
+      org: 'Stanford University',
+      date: '2025',
+      logo: 'standford ML certificate.png',
+      link: 'https://coursera.org/share/81c9e4e44ca1e2f44f1b7a5d39a76783'
+    },
+    {
       name: 'Cloud Architecture: Design, Implement, and Manage',
       org: 'Google Cloud',
       date: '2022',

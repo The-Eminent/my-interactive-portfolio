@@ -1,0 +1,27 @@
+/* Design tokens — cinematic dark + cyan / violet accents */
+:root {
+  --color-bg-deep: #050814;
+  --color-bg: #0a1020;
+  --color-surface: rgba(18, 26, 48, 0.72);
+  --color-surface-elevated: rgba(22, 32, 58, 0.88);
+  --color-border: rgba(120, 160, 220, 0.18);
+  --color-border-strong: rgba(0, 212, 255, 0.35);
+  --color-text: #e8eefc;
+  --color-text-muted: #9aa8c8;
+  --color-accent: #3dd9ff;
+  --color-accent-soft: rgba(61, 217, 255, 0.14);
+  --color-violet: #9d4edd;
+  --color-violet-soft: rgba(157, 78, 221, 0.12);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --shadow-glow: 0 0 40px rgba(61, 217, 255, 0.08);
+  --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.35);
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Outfit', system-ui, sans-serif;
+  --content-max: 720px;
+  --shell-max: 1200px;
+  --header-h: 56px;
+  --rail-w: 220px;
+}

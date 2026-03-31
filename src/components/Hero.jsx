@@ -1,33 +1,31 @@
 // src/components/Hero.jsx
 
 import React, { useEffect, useState } from 'react';
-import { motion, useAnimation, AnimatePresence } from 'framer-motion';
-import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
+import { motion as Motion, useAnimation, AnimatePresence } from 'framer-motion';
+import { FaLinkedin, FaGithub, FaEnvelope, FaArrowRight } from 'react-icons/fa';
+import { content } from '../data/content';
 import styles from '../styles/Hero.module.css';
 
-// Photo + text animation variants
 const mainPhotoVariants = {
-  hidden: { opacity: 0, scale: 0.8, rotateY: 90 },
+  hidden: { opacity: 0, scale: 0.85, rotateY: 75 },
   visible: { opacity: 1, scale: 1, rotateY: 0, transition: { duration: 0.8, ease: 'easeOut' } }
 };
 const mainTextFadeVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } }
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: 'easeOut' } }
 };
 const mainButtonVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+  hidden: { opacity: 0, y: 18 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } }
 };
 
-// Rotating tagline variants
 const titleVariants = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-  exit:    { opacity: 0, y: -20, transition: { duration: 0.4, ease: 'easeIn' } }
+  initial: { opacity: 0, y: 16 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.45, ease: 'easeOut' } },
+  exit: { opacity: 0, y: -16, transition: { duration: 0.35, ease: 'easeIn' } }
 };
 
-// Component to cycle through an array of strings
-const AnimatedText = ({ items, interval = 3000 }) => {
+const AnimatedText = ({ items, interval = 2600 }) => {
   const [idx, setIdx] = useState(0);
 
   useEffect(() => {
@@ -39,7 +37,7 @@ const AnimatedText = ({ items, interval = 3000 }) => {
 
   return (
     <AnimatePresence mode="wait" initial={false}>
-      <motion.div
+      <Motion.div
         key={items[idx]}
         variants={titleVariants}
         initial="initial"
@@ -48,120 +46,114 @@ const AnimatedText = ({ items, interval = 3000 }) => {
         className={styles.animatedTitle}
       >
         {items[idx]}
-      </motion.div>
+      </Motion.div>
     </AnimatePresence>
   );
 };
 
-// Dual‐mode Hero: Quick View vs Vibe Mode
-const Hero = ({ name, tagline, onQuickViewClick, onVibeModeClick }) => {
+const Hero = ({ name, tagline, onQuickViewClick }) => {
   const controls = useAnimation();
+  const socialLinks = {
+    linkedIn: content.contact.linkedIn,
+    github: 'https://github.com/The-Eminent',
+    email: `mailto:${content.contact.email}`,
+    resume: content.contact.resume
+  };
 
-  // animate in main content
   useEffect(() => {
     controls.start('visible');
   }, [controls]);
 
-  const rotatingTaglines = [
-    "Full Stack Developer",
-    "CS Grad Student @ CSUF",
-    "Open-Source Enthusiast",
-    "Tinkering with Models & Metrics",
-    "Creative Problem Solver",
-    "Let’s build something together."
-  ];
+  const rotatingTaglines = content.rotatingTaglines || [];
 
   return (
-    <motion.div key="hero-screen" className={styles.heroContainer}>
-      <motion.div
-        className={styles.mainHeroContentContainer}
+    <Motion.div key="hero-screen" className={styles.heroRoot}>
+      <Motion.div
+        className={styles.heroInner}
         variants={{
           hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { delay: 0.2, staggerChildren: 0.1, delayChildren: 0.3 } }
+          visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.15 } }
         }}
         initial="hidden"
         animate={controls}
       >
-        {/* Photo */}
-        <motion.div
+        <Motion.div
           className={styles.photoContainer}
           variants={mainPhotoVariants}
           initial="hidden"
           animate={controls}
-          style={{ width: 200, height: 200 }}
         >
-          <img src="/your-photo.jpg" alt={name} className={styles.profilePhoto} />
-        </motion.div>
+          <img
+            src="/your-photo.jpg"
+            alt={`Profile photo of ${name}`}
+            className={styles.profilePhoto}
+          />
+        </Motion.div>
 
-        {/* Name + Taglines */}
-        <div className={styles.textContainer}>
-          <motion.h1
+        <div className={styles.textBlock}>
+          <Motion.h1
             className={styles.name}
             variants={mainTextFadeVariants}
             initial="hidden"
             animate={controls}
-            transition={{ ...mainTextFadeVariants.visible.transition, delay: 0.5 }}
           >
             {name}
-          </motion.h1>
-          <motion.p
+          </Motion.h1>
+          <Motion.p
             className={styles.tagline}
             variants={mainTextFadeVariants}
             initial="hidden"
             animate={controls}
-            transition={{ ...mainTextFadeVariants.visible.transition, delay: 0.7 }}
+            transition={{ ...mainTextFadeVariants.visible.transition, delay: 0.08 }}
           >
             {tagline}
-          </motion.p>
+          </Motion.p>
 
-          {/* rotating lines */}
           <div className={styles.animatedTitles}>
             <AnimatedText items={rotatingTaglines} interval={2500} />
           </div>
         </div>
 
-        {/* Mode Toggles */}
-        <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem', justifyContent: 'center' }}>
-          <motion.button
-            className={styles.exploreButton}
-            variants={mainButtonVariants}
-            initial="hidden"
-            animate={controls}
-            transition={{ ...mainButtonVariants.visible.transition, delay: 1.2 }}
-            onClick={onQuickViewClick}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+        <Motion.div
+          className={styles.primaryActions}
+          variants={mainButtonVariants}
+          initial="hidden"
+          animate={controls}
+          transition={{ ...mainButtonVariants.visible.transition, delay: 0.35 }}
+        >
+          <button type="button" className={styles.ctaPrimary} onClick={onQuickViewClick}>
+            Explore portfolio
+            <FaArrowRight className={styles.ctaIcon} aria-hidden />
+          </button>
+          <a
+            href={socialLinks.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.secondaryButton}
           >
-            Quick View
-          </motion.button>
-          {/* <motion.button
-            className={styles.exploreButton}
-            variants={mainButtonVariants}
-            initial="hidden"
-            animate={controls}
-            transition={{ ...mainButtonVariants.visible.transition, delay: 1.4 }}
-            onClick={onVibeModeClick}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Vibe Mode
-          </motion.button> */}
-        </div>
+            Resume
+          </a>
+        </Motion.div>
 
-        {/* Social icons footer */}
-        <div className={styles.socialIcons} style={{ marginTop: '2rem' }}>
-          <a href="https://www.linkedin.com/in/kuldeepsinghrathore07/" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
+        <Motion.div
+          className={styles.socialIcons}
+          variants={mainButtonVariants}
+          initial="hidden"
+          animate={controls}
+          transition={{ ...mainButtonVariants.visible.transition, delay: 0.45 }}
+        >
+          <a href={socialLinks.linkedIn} target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="LinkedIn">
             <FaLinkedin />
           </a>
-          <a href="https://github.com/The-Eminent" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
+          <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="GitHub">
             <FaGithub />
           </a>
-          <a href="mailto:kuldeepsingh@csu.fullerton.edu" className={styles.socialIcon}>
+          <a href={socialLinks.email} className={styles.socialIcon} aria-label="Email">
             <FaEnvelope />
           </a>
-        </div>
-      </motion.div>
-    </motion.div>
+        </Motion.div>
+      </Motion.div>
+    </Motion.div>
   );
 };
 

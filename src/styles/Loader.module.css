@@ -43,9 +43,23 @@
 /* No other direct styles usually needed for LottiePlayer itself here. */
 
 
-/* The Greeting Text Container (.greetingTextContainer) is NOT part of the Loader component in this simplified setup. */
-/* Styles for the text belong in your Hero component's CSS module. */
+/* “Let’s dive in!” — above Lottie, must stack above canvas */
+.lottieStage {
+  position: relative;
+}
 
+.introText {
+  position: absolute;
+  bottom: 70%;
+  left: 28%;
+  transform: translateX(-50%);
+  z-index: 30;
+  color: #00e0ff;
+  font-size: 1.25rem;
+  font-family: 'Outfit', sans-serif;
+  text-shadow: 0 0 8px rgba(0, 224, 255, 0.6);
+  pointer-events: none;
+}
 
 /* Skip button styles - Positioned fixed in the bottom right relative to loaderContainer */
 /* Its appearance animation is controlled by the useEffect animation sequence in Loader.jsx */

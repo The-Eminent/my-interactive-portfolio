@@ -35,12 +35,14 @@ skills: [
     {
       title: 'IgnisAI Real‑Time Wildfire Monitoring & Prediction',
       tech: ['React', 'Mapbox GL JS', 'Node.js/Express', 'MongoDB', 'Python','TensorFlow','scikit‑learn'],
+      highlights: ['Sub-200ms inference', 'GBM spread prediction (AUC 0.71)', 'Mapbox GeoJSON overlays'],
       description: 'I built a full-stack web application that ingests NASA FIRMS fire detections alongside live weather and elevation data and stores them in MongoDB. I then implemented Gradient Boosting models to classify whether a fire will spread (AUC 0.71, 65% accuracy) and to regress its spread distance (RMSE 1.35 km). To serve predictions, I spawn a Python inference service that returns results in under 200 ms. Finally, I render interactive GeoJSON “fan” overlays on a responsive Mapbox map, visualizing probabilistic spread direction and distance.',
       link: 'https://github.com/The-Eminent/AI-Project'
     },
     {
       title: 'Project Approval System',
       tech: ['React', 'Node.js', 'MongoDB', 'Express'],
+      highlights: ['Role-based workflows', 'Status tracking', 'Plagiarism integration'],
       description: 'A full-stack platform to streamline academic project approvals with user roles, status tracking, and plagiarism integration.',
       link: 'https://github.com/The-Eminent/Project-Approval-System'
     },
@@ -80,7 +82,7 @@ skills: [
     {
       company: 'California State University - Fullerton',
       role: 'Graduate Research Assistant',
-      date: 'March 2025 - Current',
+      date: 'March 2025 - Oct 2025',
       details: [
         'Analyze complex executive and organizational datasets using Python, pandas, and SQL to identify trends in leadership traits, compensation, and firm performance.',
         'Develop interactive dashboards with Power BI and matplotlib to visualize insights on corporate leadership, political affiliations, and business outcomes.',
@@ -90,7 +92,7 @@ skills: [
     {
       company: 'iNeuron',
       role: 'Project Intern',
-      date: 'Aug 2023 – Apr 2024',
+      date: 'Aug 2023 - Apr 2024',
       details: [
         'Contributed to applied machine learning project analyzing emotional trends in social media content for mental health research, processing large-scale datasets.',
         'Built and evaluated sentiment prediction models achieving 85%+ accuracy in classifying emotional states using NLP pipelines and custom feature extraction.',
@@ -101,7 +103,7 @@ skills: [
     {
       company: 'CrystalTech',
       role: 'Python Developer Intern',
-      date: 'Jan 2023 – June 2023',
+      date: 'Jan 2023 - June 2023',
       details: [
         'Designed and developed a scalable, interactive data visualization dashboard using Dash, Plotly, and Python, enabling real-time analytics for 15+ internal business teams.',
         'Collaborated with team leads to transform key performance indicators (KPIs) into custom, insight-driven reports, reducing manual reporting efforts by 60%+ and saving 20+ hours weekly.',
@@ -117,7 +119,7 @@ skills: [
     {
       institution: 'California State University, Fullerton',
       degree: 'M.S. Computer Science',
-      duration: '2024 – 2026',
+      duration: '2024 - 2026',
       // --- ADD PLACEHOLDER FOR LOGO IMAGE PATH ---
       logo: '/csuf-logo.png', // Example path to CSUF logo image in your public folder
       // Consider size: A square image around 64x64px or 100x100px works well for small logos. Vector formats (SVG) are scalable.
@@ -125,7 +127,7 @@ skills: [
     {
       institution: 'Indore Institute of Science and Technology',
       degree: 'B.Tech Computer Science & Engineering',
-      duration: '2020 – 2024',
+      duration: '2020 - 2024',
       // --- ADD PLACEHOLDER FOR LOGO IMAGE PATH ---
       logo: '/iist-logo.jpg', // Example path to IIST logo image
     }
@@ -140,6 +142,27 @@ skills: [
 
   // — NEW —
   certifications: [
+    {
+      name: 'Oracle Cloud Infrastructure 2025 Certified Data Science Professional',
+      org: 'Oracle',
+      date: '2025',
+      logo: '/oracle-oci-data-science-2025.png',
+      link: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=0778CF2D11B2065FDD78143099163BFE73F0E110297830EFEA17B37FB7B880E9'
+    },
+    {
+      name: 'Oracle Cloud Infrastructure 2025 Certified Generative AI Professional',
+      org: 'Oracle',
+      date: '2025',
+      logo: '/oracle-oci-genai-2025.png',
+      link: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=854C53D815E22BF436136D375AD2846FCD03EFF8C7FE265AF12724AD94051F50'
+    },
+    {
+      name: 'Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate',
+      org: 'Oracle',
+      date: '2025',
+      logo: '/oracle-oci-ai-foundations-2025.png',
+      link: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=2CEF416E017A09740A23A6738D005ED7A13E38B64F89A5576B5A4767A7D9E9CA'
+    },
     // 🏆 High-Impact Skill Badges (Cloud, ML, DevOps)
     {
       name: 'Machine Learning',
@@ -276,9 +299,17 @@ skills: [
   contact: {
     email: 'kuldeepsingh@csu.fullerton.edu', // Your actual email
     linkedIn: 'https://www.linkedin.com/in/kuldeepsinghrathore07/', // Your actual LinkedIn URL
-    github: 'https://github.com/the-eminent' // Your actual GitHub URL
-    // Add other contact info like Twitter, personal website etc.
+    github: 'https://github.com/the-eminent', // Your actual GitHub URL
+    resume: 'https://drive.google.com/file/d/1d7fQIFL0ong2_Jdm9ZI31DQQob07uOe7/view?usp=sharing'
   },
+
+  skillsByCategory: [
+    { label: 'Core & languages', items: ['Python', 'JavaScript', 'React.js', 'Node.js', 'SQL', 'C', 'C++'] },
+    { label: 'Web & APIs', items: ['Express.js', 'Flask', 'HTML', 'CSS', 'Tailwind'] },
+    { label: 'Data & analytics', items: ['Power BI', 'Tableau', 'Excel', 'R', 'RStudio'] },
+    { label: 'Cloud & DevOps', items: ['GCP', 'Docker', 'Kubernetes', 'Github Actions'] },
+    { label: 'Databases & tools', items: ['MongoDB', 'Cassandra', 'Git', 'Github'] }
+  ],
 
   // Array of strings for Rotating Taglines (used in Hero)
   rotatingTaglines: [

@@ -1,59 +1,70 @@
 // src/components/Loader.jsx
 
-import React, { useEffect, useState } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { motion as Motion, useAnimation, useReducedMotion } from 'framer-motion';
 import Lottie from 'react-lottie-player';
 import styles from '../styles/Loader.module.css';
 import fistAnimationData from '../assets/fist.json';
 
 const Loader = ({ onComplete }) => {
   const skipButtonControls = useAnimation();
+  const prefersReducedMotion = useReducedMotion();
   const [showIntroText, setShowIntroText] = useState(false);
+  const hasCompletedRef = useRef(false);
 
-  // Timings in milliseconds
-  const INTRO_DELAY_MS     = 2000;  // when fists collide
-  const INTRO_DURATION_MS  = 1200;  // how long text stays up
-  const LOTTIE_DURATION_MS = 5100;  // total length of your fist animation
+  const INTRO_DELAY_MS = 1300;
+  const INTRO_DURATION_MS = 800;
 
-  // Bounce‑in for “Let’s dive in.”
+  const completeOnce = useCallback(() => {
+    if (hasCompletedRef.current) return;
+    hasCompletedRef.current = true;
+    onComplete();
+  }, [onComplete]);
+
   const introTextVariants = {
     hidden: { opacity: 0, scale: 0.8, y: 20 },
     visible: {
       opacity: 1,
       scale: [1.2, 0.9, 1],
       y: [0, -10, 0],
-      transition: { duration: 0.8, ease: 'easeOut' }
+      transition: { duration: 0.45, ease: 'easeOut' }
     }
   };
 
-  // Fade‑in for Skip button
   const skipButtonVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
   };
 
   useEffect(() => {
-    // Show the "Let's dive in" text at the collision time
-    const introTimer = setTimeout(() => setShowIntroText(true), INTRO_DELAY_MS);
-    const hideTimer  = setTimeout(() => setShowIntroText(false), INTRO_DELAY_MS + INTRO_DURATION_MS);
+    let introTimer;
+    let hideTimer;
+    let reduceMotionTimer;
 
-    // Immediately reveal the Skip button
+    if (prefersReducedMotion) {
+      reduceMotionTimer = setTimeout(completeOnce, 900);
+    } else {
+      introTimer = setTimeout(() => setShowIntroText(true), INTRO_DELAY_MS);
+      hideTimer = setTimeout(() => setShowIntroText(false), INTRO_DELAY_MS + INTRO_DURATION_MS);
+    }
+
     skipButtonControls.start('visible');
 
     return () => {
-      clearTimeout(introTimer);
-      clearTimeout(hideTimer);
+      if (introTimer) clearTimeout(introTimer);
+      if (hideTimer) clearTimeout(hideTimer);
+      if (reduceMotionTimer) clearTimeout(reduceMotionTimer);
     };
-  }, [skipButtonControls]);
+  }, [INTRO_DELAY_MS, INTRO_DURATION_MS, completeOnce, prefersReducedMotion, skipButtonControls]);
 
   return (
-    <motion.div
+    <Motion.div
       className={styles.loaderContainer}
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0.6, ease: 'easeOut' } }}
+      exit={{ opacity: 0, transition: { duration: 0.35, ease: 'easeOut' } }}
     >
-      {/* Centered 250×250 box containing both Lottie and the intro text */}
       <div
+        className={styles.lottieStage}
         style={{
           position: 'absolute',
           top: '50%',
@@ -63,49 +74,37 @@ const Loader = ({ onComplete }) => {
           height: '250px'
         }}
       >
-        {/* Pop-in text, positioned relative to this 250×250 box */}
-        {showIntroText && (
-          <motion.div
+        <Lottie
+          animationData={fistAnimationData}
+          play={!prefersReducedMotion}
+          loop={false}
+          speed={3}
+          onComplete={prefersReducedMotion ? undefined : completeOnce}
+          style={{ width: '100%', height: '100%', position: 'relative', zIndex: 1 }}
+        />
+
+        {showIntroText && !prefersReducedMotion && (
+          <Motion.div
             variants={introTextVariants}
             initial="hidden"
             animate="visible"
-            style={{
-              position: 'absolute',
-              bottom: '70%',      // tweak this % until it sits exactly above the knuckles
-              left: '28%',
-              transform: 'translateX(-50%)',
-              color: '#00e0ff',
-              fontSize: '1.25rem',
-              textShadow: '0 0 8px rgba(0, 224, 255, 0.6)',
-              pointerEvents: 'none'
-            }}
+            className={styles.introText}
           >
             Let’s dive in!
-          </motion.div>
+          </Motion.div>
         )}
-
-        {/* Your fist‑bump Lottie */}
-        <Lottie
-          animationData={fistAnimationData}
-          play
-          loop={false}
-          speed={2}
-          onComplete={onComplete}
-          style={{ width: '100%', height: '100%' }}
-        />
       </div>
 
-      {/* Skip button in the bottom‑right of the loader */}
-      <motion.button
+      <Motion.button
         className={styles.skipButton}
         variants={skipButtonVariants}
         initial="hidden"
         animate={skipButtonControls}
-        onClick={onComplete}
+        onClick={completeOnce}
       >
         Skip
-      </motion.button>
-    </motion.div>
+      </Motion.button>
+    </Motion.div>
   );
 };
 

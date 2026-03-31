@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import styles from '../styles/NavigationPrompt.module.css'; // Import CSS module
 
 const NavigationPrompt = ({ options, onSelectOption }) => {
@@ -22,7 +22,7 @@ const NavigationPrompt = ({ options, onSelectOption }) => {
     };
 
     return (
-        <motion.div
+        <Motion.div
             className={styles.promptContainer}
             variants={listVariants}
             initial="hidden"
@@ -31,7 +31,7 @@ const NavigationPrompt = ({ options, onSelectOption }) => {
             <h2 className={styles.question}>What would you like to know?</h2>
             <div className={styles.optionsList}>
                 {options.map((option) => (
-                    <motion.button
+                    <Motion.button
                         key={option.id}
                         className={styles.optionButton}
                         variants={itemVariants} // Apply item animation variants
@@ -40,17 +40,17 @@ const NavigationPrompt = ({ options, onSelectOption }) => {
                         whileTap={{ scale: 0.95 }} // Shrink slightly when clicked
                     >
                         <span className={styles.commandPrefix}>{'>'}</span> {option.command}
-                    </motion.button>
+                    </Motion.button>
                 ))}
             </div>
              {/* Optional: Add contact info here or link to contact */}
-             <motion.p
+             <Motion.p
                  className={styles.contactHint}
                  variants={itemVariants} // Can use the same variants or different ones
              >
                 (Click an option above or use 'get in touch')
-             </motion.p>
-        </motion.div>
+             </Motion.p>
+        </Motion.div>
     );
 };
 

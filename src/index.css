@@ -1,71 +1,54 @@
-/* Basic Reset and Global Styles */
-/* body {
-    margin: 0;
-    padding: 0;
-    background: radial-gradient(circle at top left, #10183b 0%, #04081b 100%);
-    color: #ffffff;
-    font-family: 'Inter', sans-serif;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-} */
+/* Basic reset and global styles — uses tokens.css variables; fonts from index.html */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-/* fix for scroll outside viewport */
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-    margin: 0;
-    padding: 0;
-    background: radial-gradient(circle at top left, #10183b 0%, #04081b 100%);
-    color: #ffffff;
-    font-family: 'Inter', sans-serif;
-    /* allow normal scrolling */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background:
+    radial-gradient(ellipse 120% 80% at 50% -20%, rgba(61, 217, 255, 0.12), transparent 50%),
+    radial-gradient(ellipse 80% 50% at 100% 50%, var(--color-violet-soft), transparent 45%),
+    linear-gradient(165deg, var(--color-bg-deep) 0%, #0c1428 40%, var(--color-bg) 100%);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 0;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  z-index: 0;
 }
 
 .app-container {
-    width: 90%;
-    max-width: 1200px;
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 10;
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
+  position: relative;
+  z-index: 10;
+  padding: 0;
 }
 
 .content-area {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    padding: 20px;
-    box-sizing: border-box;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 h1,
@@ -74,57 +57,47 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Outfit', sans-serif;
-    color: #00e0ff;
-    text-shadow: 0 0 10px rgba(0, 224, 255, 0.4);
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+  font-family: var(--font-display);
+  color: var(--color-accent);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: 0;
+  text-shadow: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
 .code-like {
-    font-family: 'Fira Code', monospace;
-    color: #00ff00;
+  font-family: 'Fira Code', monospace;
+  color: #7dff9a;
 }
 
 button {
-    font-family: 'Inter', sans-serif;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    color: inherit;
-    font-size: inherit;
+  font-family: var(--font-sans);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
 }
 
 a {
-    color: #00e0ff;
-    text-decoration: none;
-    transition: color 0.3s ease;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
 }
 
 a:hover {
-    color: #ffffff;
+  color: #fff;
 }
 
-/* Optional: Style scrollbar
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #04081b; }
-::-webkit-scrollbar-thumb { background: #00e0ff; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #ffffff; } */
-
 @media (max-width: 768px) {
-    .app-container {
-        width: 95%;
-        height: 95vh;
-        padding: 10px;
-    }
-
-    .content-area {
-        padding: 15px;
-    }
-
-    h1,
-    h2 {
-        font-size: 2em;
-    }
+  .app-container {
+    min-height: 100vh;
+  }
 }

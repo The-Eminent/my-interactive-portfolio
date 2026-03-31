@@ -10,9 +10,7 @@ const ParticlesBackground = () => {
   }, []);
 
   // Memoized callback once particles are loaded (optional)
-  const particlesLoaded = useCallback(async container => {
-    // console.log('Particles loaded:', container);
-  }, []);
+  const particlesLoaded = useCallback(async () => {}, []);
 
   // Your existing particles options
   const options = useMemo(() => ({
@@ -32,32 +30,32 @@ const ParticlesBackground = () => {
       },
       modes: {
         push: { quantity: 4 },
-        grab: { distance: 150, links: { opacity: 0.3 } },
+        grab: { distance: 140, links: { opacity: 0.15 } },
       },
     },
     particles: {
-      color: { value: '#b000ff' },
+      color: { value: '#5ecfff' },
       links: {
-        color: '#00f0ff',
-        distance: 150,
+        color: '#7b5cff',
+        distance: 140,
         enable: true,
-        opacity: 0.2,
-        width: 1,
+        opacity: 0.1,
+        width: 0.8,
       },
       move: {
         direction: 'none',
         enable: true,
         outModes: { default: 'bounce' },
         random: false,
-        speed: 0.3,
+        speed: 0.22,
         straight: false,
       },
       number: {
         density: { enable: true, area: 800 },
-        value: 60,
+        value: 42,
       },
       opacity: {
-        value: 0.4,
+        value: 0.28,
         animation: {
           enable: true,
           speed: 0.5,

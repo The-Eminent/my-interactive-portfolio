@@ -1,190 +1,178 @@
-/* Styles for the Hero component */
-.heroContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-    z-index: 10;
-    position: relative;
-    color: #ffffff; /* Default text color for hero */
+/* Full-viewport centered hero (classic portfolio landing) */
+.heroRoot {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 2rem);
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+  color: var(--color-text);
+}
+
+.heroInner {
+  width: min(640px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .photoContainer {
-    margin-bottom: 30px;
-     position: relative;
-     display: inline-block; /* Make container wrap the image for pseudo-element centering */
+  margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
+  position: relative;
+  display: inline-block;
 }
 
 .profilePhoto {
-    width: 180px; /* Revert size or adjust */
-    height: 180px;
-    border-radius: 50%;
-     border: 3px solid rgba(255, 255, 255, 0.1); /* Very subtle light border */
-    object-fit: cover;
-     position: relative;
-     z-index: 1;
-     transition: border-color 0.3s ease; /* Smooth border color transition */
+  width: clamp(160px, 36vw, 200px);
+  height: clamp(160px, 36vw, 200px);
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.12);
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+  transition: border-color 0.3s ease;
+  box-shadow: 0 0 0 1px rgba(61, 217, 255, 0.2), 0 20px 50px rgba(0, 0, 0, 0.35);
 }
 
-/* Subtle glow behind the photo */
 .photoContainer::before {
-     content: '';
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     width: 100%; /* Controls how far the blur extends */
-     height: 100%;
-     background-color: #00e0ff; /* Accent Aqua glow */
-     border-radius: 50%;
-     transform: translate(-50%, -50%);
-     filter: blur(40px);
-     opacity: 0.3;
-     z-index: 0;
-     transition: opacity 0.3s ease, filter 0.3s ease;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(61, 217, 255, 0.45) 0%, rgba(157, 78, 221, 0.2) 55%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(36px);
+  opacity: 0.45;
+  z-index: 0;
 }
 
 .photoContainer:hover::before {
-    opacity: 0.6;
-    filter: blur(50px);
+  opacity: 0.65;
 }
+
 .photoContainer:hover .profilePhoto {
-    border-color: #00e0ff; /* Aqua border on hover */
+  border-color: var(--color-accent);
 }
 
-
-.textContainer {
-    margin-bottom: 40px;
+.textBlock {
+  margin-bottom: 1.5rem;
 }
 
 .name {
-    font-family: 'Outfit', sans-serif;
-    font-size: 4em;
-    margin-bottom: 0.1em;
-    color: #ffffff;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 6.5vw, 3.5rem);
+  font-weight: 700;
+  margin: 0 0 0.2em;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
 .tagline {
-    font-family: 'Outfit', sans-serif;
-    font-size: 2em;
-    color: #00e0ff;
-    text-shadow: 0 0 12px rgba(0, 224, 255, 0.6);
-    margin-top: 0;
-    margin-bottom: 0.8em;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 3.2vw, 1.85rem);
+  color: var(--color-accent);
+  margin: 0 0 0.65rem;
+  font-weight: 500;
 }
-
-.introLine {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.1em;
-    color: #8b93af;
-}
-
-.exploreButton {
-    background: rgba(0, 224, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-    padding: 12px 40px;
-    font-size: 1.3em;
-    color: #ffffff;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-    box-shadow: 0 0 10px rgba(0, 224, 255, 0.3);
-
-    &:hover {
-         transform: scale(1.05);
-         border-color: #ffffff;
-         color: #00e0ff;
-         box-shadow: 0 0 25px rgba(0, 224, 255, 0.8);
-    }
-
-    @media (max-width: 768px) {
-         &:hover {
-             transform: scale(1);
-             box-shadow: 0 0 15px rgba(0, 224, 255, 0.5);
-         }
-     }
-
-     &::before {
-         content: '';
-         position: absolute;
-         top: 0;
-         left: -100%;
-         width: 100%;
-         height: 100%;
-         background: rgba(0, 224, 255, 0.15);
-         transition: transform 0.4s ease;
-         z-index: -1;
-         transform: translateX(0);
-     }
-
-    &:hover::before {
-          transform: translateX(200%);
-    }
-
-    &:active {
-        transform: scale(0.98);
-         border-color: #ffffff;
-         color: #00e0ff;
-         box-shadow: 0 0 10px rgba(0, 224, 255, 0.6);
-     }
-}
-
-@media (max-width: 768px) {
-    .profilePhoto { width: 150px; height: 150px; margin-bottom: 20px; }
-    .photoContainer::before { filter: blur(30px); opacity: 0.25; }
-    .photoContainer:hover::before { filter: blur(40px); }
-    .name { font-size: 3em; }
-    .tagline { font-size: 1.6em; margin-bottom: 0.5em;}
-    .introLine { font-size: 1em; }
-    .exploreButton { font-size: 1.1em; padding: 12px 25px; letter-spacing: 1px;}
-}
-
 
 .animatedTitles {
-    height: 2.2rem;           /* reserve space so it never jumps layout */
-    overflow: hidden;
-    margin-top: 0.5rem;
-  }
-  
-  .animatedTitle {
-    display: inline-block;
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.5rem;
-    color: #8b93af;
-    white-space: nowrap;
-  }
-  
-  .socialIcons {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;             /* space between icons */
-    margin-top: 2rem;
-  }
-  
-  .socialIcon {
-    font-size: 1.8rem;        /* make them larger */
-    color: #00e0ff;
-    transition: color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .socialIcon:hover {
-    color: #ffffff;
-    transform: translateY(-3px);
-  }
-  
-  adjust below Explore button
-  .exploreButton + .socialIcons {
-    margin-top: 1.5rem;
-  }
+  min-height: 2rem;
+  margin-top: 0.35rem;
+  overflow: hidden;
+}
 
-  
+.animatedTitle {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: #b8c5e8;
+  font-weight: 500;
+}
+
+.primaryActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #061018;
+  background: linear-gradient(120deg, #3dd9ff, #7dd3fc);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  box-shadow: 0 4px 24px rgba(61, 217, 255, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ctaPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(61, 217, 255, 0.45);
+}
+
+.ctaIcon {
+  font-size: 0.85em;
+}
+
+.secondaryButton {
+  background: rgba(10, 18, 40, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+  padding: 12px 32px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #bce6ff;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.secondaryButton:hover {
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.socialIcon {
+  font-size: 1.8rem;
+  color: var(--color-accent);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.socialIcon:hover {
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 480px) {
+  .ctaPrimary,
+  .secondaryButton {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+}

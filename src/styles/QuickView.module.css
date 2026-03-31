@@ -121,6 +121,13 @@
 @media (min-width: 960px) {
   .sidebarRail {
     display: flex;
+    /* Keep the rail visible on desktop while the main content scrolls. */
+    position: sticky;
+    top: 52px; /* matches the sticky top bar height */
+    height: calc(100vh - 52px);
+    max-height: none;
+    overflow-y: hidden;
+    z-index: 60;
   }
 }
 

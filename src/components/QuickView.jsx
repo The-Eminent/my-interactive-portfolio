@@ -192,7 +192,7 @@ export default function QuickView({ onBack }) {
           <button type="button" className={styles.backCompact} onClick={onBack} aria-label="Back to home">
             <FaArrowLeft />
           </button>
-          <span className={styles.brand}>Kuldeep Rathore</span>
+          <span className={styles.brand}>Kuldeep Singh Rathore</span>
         </div>
         <nav className={styles.topBarLinks} aria-label="Quick links">
           <a href={quickLinks.github} target="_blank" rel="noopener noreferrer">GitHub</a>
